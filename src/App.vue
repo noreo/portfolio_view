@@ -17,6 +17,8 @@ export default {
 
 <style lang="scss">
 @import 'main.scss';
+@import 'global_scss/skeleton.scss';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
