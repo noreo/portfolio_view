@@ -34,7 +34,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import '../main.scss';
+@import '../global_scss/colors.scss';
 h1,
 h2 {
   font-weight: normal;
@@ -46,13 +46,13 @@ ul {
   li {
     display: inline-block;
     margin: 0 100px;
-  color: $main-sec-color;
+  color: $adidas-lipstick;
     
   }
 }
 
 
 a {
-  color: $main-sec-color;
+  color: $adidas-lipstick;
 }
 </style>

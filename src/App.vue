@@ -16,15 +16,14 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'main.scss';
-@import 'global_scss/skeleton.scss';
+@import 'global_scss/global.scss';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: $main-bg-color;
+  color: $black;
   margin-top: 60px;
 }
 
