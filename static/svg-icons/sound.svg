@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="24px" viewBox="0 0 29 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>sound-green</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="Header" transform="translate(-817.000000, -22.000000)" stroke="#10CEDA">
+            <g id="sound-green" transform="translate(817.000000, 19.000000)">
+                <g id="sound">
+                    <path d="M11.8426339,3.75 L11.8426339,26.25" id="Line"></path>
+                    <path d="M22.6640625,3.75 L22.6640625,26.25" id="Line-Copy-4"></path>
+                    <path d="M6.43191964,8.90625 L6.43191964,23.90625" id="Line-Copy"></path>
+                    <path d="M17.2533482,8.90625 L17.2533482,23.90625" id="Line-Copy-2"></path>
+                    <path d="M1.02120536,12.65625 L1.02120536,20.15625" id="Line-Copy-3"></path>
+                    <path d="M28.0747768,12.65625 L28.0747768,20.15625" id="Line-Copy-5"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

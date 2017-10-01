@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="52px" viewBox="0 0 65 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>logo2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="43.458 47.9998 43.458 0.225133333 0.0833 0.225133333 0.0833 47.9998"></polygon>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home" transform="translate(-467.000000, -310.000000)">
+            <g id="logo2" transform="translate(467.000000, 309.000000)">
+                <polygon id="Fill-1" fill="#FFFFFF" points="0 8.8754 7.875 8.8754 7.875 0.9994 0 0.9994"></polygon>
+                <polygon id="Fill-2" fill="#FFFFFF" points="18.834 12.5424 26.709 12.5424 26.709 4.6674 18.834 4.6674"></polygon>
+                <polygon id="Fill-3" fill="#FFFFFF" points="5.5 30.7084 13.375 30.7084 13.375 22.8334 5.5 22.8334"></polygon>
+                <g id="Group-6" transform="translate(21.000000, 4.266400)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-5"></g>
+                    <path d="M32.9233,33.3418 L21.8143,6.5528 L10.7043,33.3418 L32.9233,33.3418 Z M23.7473,0.2598 L37.9853,34.6078 L37.9853,34.6428 L43.4583,47.9998 L39.0053,47.9998 L34.6463,37.5608 L8.9823,37.5608 L4.6223,47.9998 L0.0833,47.9998 L5.6423,34.6428 L5.6423,34.6078 L19.8803,0.2598 C19.8803,0.1818 23.7473,0.2598 23.7473,0.2598 L23.7473,0.2598 Z" id="Fill-4" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

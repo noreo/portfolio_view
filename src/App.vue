@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-link to="/">Go to Hello</router-link>
+    <router-link to="/">Go to Hellooo</router-link>
     <router-link to="/bye">Go to Bye</router-link>
     <transition name="fade" mode="out-in">
       <router-view></router-view>
@@ -10,13 +9,18 @@
 </template>
 
 <script>
+import './assets/icons';
 export default {
   name: 'app'
 }
+
 </script>
 
 <style lang="scss">
 @import 'global_scss/global.scss';
+html,body{
+  font-size: 16px;
+}
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

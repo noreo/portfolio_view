@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "svg": "vsvg -s ./static/svg-icons -t ./src/assets/icons"
   },
   "dependencies": {
     "vue": "^2.4.2",
@@ -45,6 +46,7 @@
     "url-loader": "^0.5.8",
     "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1",
+    "vue-svgicon": "^1.2.6",
     "vue-template-compiler": "^2.4.2",
     "webpack": "^2.6.1",
     "webpack-bundle-analyzer": "^2.2.1",
