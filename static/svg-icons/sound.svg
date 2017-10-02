@@ -1,21 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="29px" height="24px" viewBox="0 0 29 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
-    <title>sound-green</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
-        <g id="Header" transform="translate(-817.000000, -22.000000)" stroke="#10CEDA">
-            <g id="sound-green" transform="translate(817.000000, 19.000000)">
-                <g id="sound">
-                    <path d="M11.8426339,3.75 L11.8426339,26.25" id="Line"></path>
-                    <path d="M22.6640625,3.75 L22.6640625,26.25" id="Line-Copy-4"></path>
-                    <path d="M6.43191964,8.90625 L6.43191964,23.90625" id="Line-Copy"></path>
-                    <path d="M17.2533482,8.90625 L17.2533482,23.90625" id="Line-Copy-2"></path>
-                    <path d="M1.02120536,12.65625 L1.02120536,20.15625" id="Line-Copy-3"></path>
-                    <path d="M28.0747768,12.65625 L28.0747768,20.15625" id="Line-Copy-5"></path>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-384 386 30 30" enable-background="new -384 386 30 30" xml:space="preserve">
+<title>sound-green</title>
+<desc>Created with Sketch.</desc>
+<polygon id="Line" fill="#10CEDA" points="-372.7,389.2 -372.7,412.8 -371.7,412.8 -371.7,389.2 "/>
+<polygon id="Line-Copy-4" fill="#10CEDA" points="-361.8,389.2 -361.8,412.8 -360.8,412.8 -360.8,389.2 "/>
+<polygon id="Line-Copy" fill="#10CEDA" points="-378.1,394.4 -378.1,410.4 -377.1,410.4 -377.1,394.4 "/>
+<polygon id="Line-Copy-2" fill="#10CEDA" points="-367.2,394.4 -367.2,410.4 -366.2,410.4 -366.2,394.4 "/>
+<polygon id="Line-Copy-3" fill="#10CEDA" points="-383.5,398.2 -383.5,406.7 -382.5,406.7 -382.5,398.2 "/>
+<polygon id="Line-Copy-5" fill="#10CEDA" points="-356.4,398.2 -356.4,406.7 -355.4,406.7 -355.4,398.2 "/>
 </svg>

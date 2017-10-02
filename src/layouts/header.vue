@@ -6,6 +6,10 @@
       </router-link>
       <ul class="navbt">
         <li>
+          <button class="button button-square noborder">
+            <svgicon name="sound" width="24" height="24" color=""></svgicon>
+          </button>
+        </li><li>
           <button class="button button-square">
             <span>Fr</span>
           </button>
@@ -86,9 +90,17 @@ ul.navbt {
     margin-top: -0.75em;
     margin-left: -0.75em;
     left: 50%;
+    path {
+    fill: $black;
   }
+  }
+  
   &:hover {
     border-color: $brightturquoise;
+  }
+  &.noborder{
+      border-color:transparent;
+    border-radius: 1.5em;
   }
 }
 </style>

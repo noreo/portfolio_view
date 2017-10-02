@@ -3,9 +3,9 @@
 var icon = require('vue-svgicon')
 icon.register({
   'sound': {
-    width: 29,
-    height: 24,
-    viewBox: '0 0 29 24',
-    data: `<g fill-rule="evenodd" stroke-linecap="square"><path pid="0" d="M11.843.75v22.5M22.664.75v22.5M6.432 5.906v15M17.253 5.906v15M1.021 9.656v7.5M28.075 9.656v7.5"/></g>`
+    width: 16,
+    height: 16,
+    viewBox: '-384 386 30 30',
+    data: `<path pid="0" d="M-372.7 389.2v23.6h1v-23.6zM-361.8 389.2v23.6h1v-23.6zM-378.1 394.4v16h1v-16zM-367.2 394.4v16h1v-16zM-383.5 398.2v8.5h1v-8.5zM-356.4 398.2v8.5h1v-8.5z"/>`
   }
 })
