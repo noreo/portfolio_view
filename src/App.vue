@@ -1,7 +1,13 @@
 <template>
   <div id="app">
+    <StickyHeader class="white" />
+    <br>    
+    <br>    
+    <br>    
+    <br>    
     <router-link to="/">Go to Hellooo</router-link>
     <router-link to="/bye">Go to Bye</router-link>
+
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -9,8 +15,12 @@
 </template>
 
 <script>
+import StickyHeader from './layouts/StickyHeader';
 import './assets/icons';
 export default {
+   components: {
+    StickyHeader
+  },
   name: 'app'
 }
 

@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
- <Header />
     <h1>{{ msg }}</h1>
     <div>
       <ul>
@@ -17,13 +16,9 @@
 </template>
 
 <script>
-import Header from '../layouts/Header'
 export default {
   name: 'hello',
-  components: {
-    Header
-  },
-  data() {
+   data() {
     return {
       users: [
         { firstname: 'Sebastian', lastname: 'Eschweiler' },
@@ -51,8 +46,7 @@ ul {
   li {
     display: inline-block;
     margin: 0 100px;
-  color: $adidas-lipstick;
-    
+    color: $adidas-lipstick;
   }
 }
 
