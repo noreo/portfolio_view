@@ -3,8 +3,13 @@
     <StickyHeader class="white" />
     <header class="cover">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
-      <h1 class="intro" v-html="intro"></h1>
+      <div class="intro">
+        <h1 v-html="intro"></h1>
+        <div class="vl"><span class="cercle"></span></div>
+      </div>
     </header>
+    <router-link to="/">Go to Hellooo</router-link>
+    <router-link to="/bye">Go to Bye</router-link>
   </div>
 </template>
 
@@ -27,29 +32,64 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import '../global_scss/colors.scss';
-.cover{
+  $vl-height:8em;
+  $cercle-size:1em;
+
+.cover {
   height: 100vh;
-   text-align: center;
-
-  /* May want to do this if there is risk the container may be narrower than the element inside */
+  text-align: center;
   white-space: nowrap;
-  &:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em; /* Adjusts for spacing */
-}
-}
-.mainlogo{
-  margin-right: 1em; //adjust
+  display: block;
 
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; // Adjusts for spacing
+  }
+}
+
+.mainlogo {
+  margin-right: 1em; //adjust
   display: inline-block;
   vertical-align: middle;
   width: 65px;
 }
-.intro{
-  font-size: 1em;
-  align-self: flex-end;
+.intro {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding-bottom:$vl-height;
+  h1 {
+    font-size: 1em;
+    line-height: 1.3;
+  } 
+  .vl{
+    border-left: 1px solid $brightturquoise;
+    height: $vl-height;
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    bottom: 0;
+  white-space: nowrap;
+    
+    .cercle{
+      position: absolute;
+      left: 0;
+      top:0;
+      margin-left: - $cercle-size / 2;
+    }
+  }
+  .cercle{
+    display: block;
+    height: $cercle-size;
+    width: $cercle-size;
+    border-radius:  $cercle-size;
+    background-color: $brightturquoise;
+    }
+  
 }
 </style>

@@ -69,8 +69,6 @@ ul.navbt {
   }
 }
 
-
-
 .button-square {
   color: $black;
   font-size: 1em;

@@ -1,12 +1,5 @@
 <template>
   <div id="app">
-    <br>    
-    <br>    
-    <br>    
-    <br>    
-    <router-link to="/">Go to Hellooo</router-link>
-    <router-link to="/bye">Go to Bye</router-link>
-
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -23,7 +16,8 @@ export default {
 
 <style lang="scss">
 @import 'global_scss/global.scss';
-html,body{
+html,
+body {
   font-size: 16px;
 }
 
@@ -33,13 +27,17 @@ html,body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $black;
-  margin-top: 60px;
+  margin:0;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity .5s
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+{
   opacity: 0
 }
 </style>
