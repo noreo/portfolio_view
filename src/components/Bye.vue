@@ -4,7 +4,6 @@
 
     <h1>{{ msg }}</h1>
     <div id="example">
-      <my-component></my-component>
     </div>
 
   </div>

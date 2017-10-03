@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <StickyHeader class="white" />
     <br>    
     <br>    
     <br>    
@@ -15,12 +14,8 @@
 </template>
 
 <script>
-import StickyHeader from './layouts/StickyHeader';
 import './assets/icons';
 export default {
-   components: {
-    StickyHeader
-  },
   name: 'app'
 }
 
