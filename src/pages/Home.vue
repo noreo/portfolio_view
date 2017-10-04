@@ -67,6 +67,7 @@ export default {
     font-size: 1em;
     line-height: 1.3;
   } 
+  
   .vl{
     border-left: 1px solid $brightturquoise;
     height: $vl-height;

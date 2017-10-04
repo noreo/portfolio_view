@@ -25,6 +25,7 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  devtool: "source-map", // any "source-map"-like devtool is possible
   module: {
     rules: [
       {
@@ -60,7 +61,7 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
     ]
   }
 }

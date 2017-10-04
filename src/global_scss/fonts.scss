@@ -1,0 +1,22 @@
+
+//@import "fonts/_mixins";
+
+$path-avenir: '/static/assets/fonts/Avenir/';
+
+$transition: '0.2s cubic-bezier(.33,.44,.29,.75)';
+
+//@include font-face(Samplino, fonts/Samplino);
+
+@font-face {
+  font-family: 'Avenir';
+  src: url($path-avenir + 'Avenir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url($path-avenir + 'Avenir-Light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
