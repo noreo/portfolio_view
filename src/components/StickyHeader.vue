@@ -9,11 +9,13 @@
           <button class="button button-square noborder">
             <svgicon name="sound" width="24" height="24" color=""></svgicon>
           </button>
-        </li><li>
+        </li>
+        <li>
           <button class="button button-square">
             <span>Fr</span>
           </button>
-        </li><li>
+        </li>
+        <li>
           <button class="button button-square">
             <svgicon name="contact" width="24" height="24" color=""></svgicon>
           </button>
@@ -30,8 +32,20 @@ export default {
   name: 'header',
   data() {
     return {
-      msg: 'header laaaaaaaaaaaaaa'
+      scrolled: false
+    };
+  },
+  methods: {
+    handleScroll() {
+      //this.scrolled = window.scrollY > 0;
+      console.log('coucou');
     }
+  },
+  beforeMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 }
 
@@ -89,15 +103,15 @@ ul.navbt {
     margin-left: -0.75em;
     left: 50%;
     path {
-    fill: $black;
+      fill: $black;
+    }
   }
-  }
-  
+
   &:hover {
     border-color: $brightturquoise;
   }
-  &.noborder{
-      border-color:transparent;
+  &.noborder {
+    border-color: transparent;
     border-radius: 1.5em;
   }
 }
