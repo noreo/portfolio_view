@@ -6,7 +6,7 @@
       <div class="intro">
         <h1 v-html="intro"></h1>
         <div class="vl">
-          <span class="cercle" v-bind:class="{ show: isCercleVisible }"></span>
+          <span class="cercle" v-bind:class="{ animate: isCercleVisible }"></span>
         </div>
       </div>
     </header>
@@ -125,8 +125,11 @@ body{
     width: $cercle-size;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
-    &.show{
+    transition: transform 600ms;
+      transition-timing-function: cubic-bezier(0.33, 0.00, 0.67, 1.00);
+    &.animate{
       opacity: 1;
+      transform: translateY($vl-height);
     }
   }
 }
