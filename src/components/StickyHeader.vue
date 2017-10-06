@@ -32,8 +32,20 @@ export default {
   name: 'header',
   data() {
     return {
-      msg: 'header laaaaaaaaaaaaaa'
+      scrolled: false
+    };
+  },
+  methods: {
+    handleScroll() {
+      //this.scrolled = window.scrollY > 0;
+      console.log('coucou');
     }
+  },
+  beforeMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 }
 
