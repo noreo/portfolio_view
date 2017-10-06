@@ -120,12 +120,12 @@ body{
   }
   .cercle {
     display: block;
-    opacity: 0;
+    opacity: 1;
     height: $cercle-size;
     width: $cercle-size;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
-    transition: transform 600ms;
+    transition: transform 1s;
       transition-timing-function: cubic-bezier(0.33, 0.00, 0.67, 1.00);
     &.animate{
       opacity: 1;
