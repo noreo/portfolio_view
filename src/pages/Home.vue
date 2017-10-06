@@ -66,6 +66,7 @@ export default {
   h1 {
     font-size: 1em;
     line-height: 1.3;
+    letter-spacing: normal;
   } 
   
   .vl{

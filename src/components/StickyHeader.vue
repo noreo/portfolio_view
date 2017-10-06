@@ -9,11 +9,13 @@
           <button class="button button-square noborder">
             <svgicon name="sound" width="24" height="24" color=""></svgicon>
           </button>
-        </li><li>
+        </li>
+        <li>
           <button class="button button-square">
             <span>Fr</span>
           </button>
-        </li><li>
+        </li>
+        <li>
           <button class="button button-square">
             <svgicon name="contact" width="24" height="24" color=""></svgicon>
           </button>
@@ -54,6 +56,7 @@ export default {
   float: left;
   margin-top: 0.5em;
   margin-right: -1px;
+  visibility: hidden;
   path {
     fill: $black;
   }
@@ -89,16 +92,17 @@ ul.navbt {
     margin-left: -0.75em;
     left: 50%;
     path {
-    fill: $black;
+      fill: $black;
+    }
   }
-  }
-  
+
   &:hover {
     border-color: $brightturquoise;
   }
-  &.noborder{
-      border-color:transparent;
+  &.noborder {
+    border-color: transparent;
     border-radius: 1.5em;
+    display: none;
   }
 }
 </style>
