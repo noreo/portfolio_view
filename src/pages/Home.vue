@@ -32,21 +32,23 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '../global_scss/colors.scss';
 $vl-height:8em;
 $cercle-size:1em;
+body{
 
-.home {
   background: $deepspace;
   //background: -webkit-linear-gradient(to bottom, #414345, #232526);
   background: linear-gradient(to bottom, $deepspace, #070C2A);
- /* background: repeating-linear-gradient(
+}
+.home {
+  background: repeating-linear-gradient(
   rgba(0, 0, 0, 0),
   rgba(0, 0, 0, 0) 2px,
-  rgba(0, 0, 0, 0.3) 2px,
-  rgba(0, 0, 0, 0.3) 4px
-)*/
+  rgba(0, 0, 0, 0.2) 2px,
+  rgba(0, 0, 0, 0.2) 4px
+)
 }
 
 .cover {
