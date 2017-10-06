@@ -18,7 +18,7 @@ $link-color: $brightturquoise !default;
 $font-color: $black !default;
 
 // Typography
-$font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family: 'Avenir', Helvetica, Arial, sans-serif !default;
 
 //Grid Variables
 $container-width: 960px !default;
@@ -30,3 +30,7 @@ $column-margin: 4% !default; // space between columns
 
 // Misc
 $global-radius: 0 !default;
+
+
+//transition
+$transition: 0.2s cubic-bezier(.33,.44,.29,.75);

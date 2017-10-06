@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link class="logo-min" to="/">
+      <router-link class="logo-min" v-bind:class="{ show: isLogoVisible }" to="/">
         <svgicon name="logo-min" width="30" height="30" color=""></svgicon>
       </router-link>
       <ul class="navbt">
@@ -32,13 +32,13 @@ export default {
   name: 'header',
   data() {
     return {
-      scrolled: false
+      isLogoVisible: false
     };
   },
   methods: {
     handleScroll() {
-      //this.scrolled = window.scrollY > 0;
-      console.log('coucou');
+      //window.innerHeight
+      this.isLogoVisible = (window.scrollY > 5);
     }
   },
   beforeMount() {
@@ -68,7 +68,12 @@ export default {
   float: left;
   margin-top: 0.5em;
   margin-right: -1px;
+  opacity: 0;
   visibility: hidden;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
   path {
     fill: $black;
   }
