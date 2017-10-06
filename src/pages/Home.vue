@@ -6,7 +6,7 @@
       <div class="intro">
         <h1 v-html="intro"></h1>
         <div class="vl">
-          <span class="cercle"></span>
+          <span class="cercle" v-bind:class="{ show: isCercleVisible }"></span>
         </div>
       </div>
     </header>
@@ -25,9 +25,22 @@ export default {
   },
   data() {
     return {
-      intro: 'My name is Aurélien, <br>I make digital experiences for humans.'
+      intro: 'My name is Aurélien, <br>I make digital experiences for humans.', 
+      isCercleVisible: false
     }
-  }
+  }, 
+   methods: {
+    handleTime() {
+      this.isCercleVisible = !this.isCercleVisible;
+    }
+  },
+  mounted: function () {
+  this.$nextTick(function () {
+    // Code that will run only after the
+    // entire view has been rendered
+    window.setInterval(this.handleTime, 3000)
+  })
+}
 }
 </script>
 
@@ -48,7 +61,10 @@ body{
   rgba(0, 0, 0, 0) 2px,
   rgba(0, 0, 0, 0.2) 2px,
   rgba(0, 0, 0, 0.2) 4px
-)
+);
+ & *{
+   color:$white;
+ }
 }
 
 .cover {
@@ -104,10 +120,14 @@ body{
   }
   .cercle {
     display: block;
+    opacity: 0;
     height: $cercle-size;
     width: $cercle-size;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
+    &.show{
+      opacity: 1;
+    }
   }
 }
 </style>
