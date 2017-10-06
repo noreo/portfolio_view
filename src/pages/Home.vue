@@ -5,7 +5,9 @@
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
         <h1 v-html="intro"></h1>
-        <div class="vl"><span class="cercle"></span></div>
+        <div class="vl">
+          <span class="cercle"></span>
+        </div>
       </div>
     </header>
     <router-link to="/">Go to Hellooo</router-link>
@@ -32,8 +34,20 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import '../global_scss/colors.scss';
-  $vl-height:8em;
-  $cercle-size:1em;
+$vl-height:8em;
+$cercle-size:1em;
+
+.home {
+  background: $deepspace;
+  //background: -webkit-linear-gradient(to bottom, #414345, #232526);
+  background: linear-gradient(to bottom, $deepspace, #070C2A);
+ /* background: repeating-linear-gradient(
+  rgba(0, 0, 0, 0),
+  rgba(0, 0, 0, 0) 2px,
+  rgba(0, 0, 0, 0.3) 2px,
+  rgba(0, 0, 0, 0.3) 4px
+)*/
+}
 
 .cover {
   height: 100vh;
@@ -56,42 +70,42 @@ export default {
   vertical-align: middle;
   width: 65px;
 }
+
 .intro {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
-  padding-bottom:$vl-height;
+  padding-bottom: $vl-height;
   h1 {
     font-size: 1em;
     line-height: 1.3;
     letter-spacing: normal;
-  } 
-  
-  .vl{
+  }
+
+  .vl {
     border-left: 1px solid $brightturquoise;
     height: $vl-height;
     position: absolute;
     left: 50%;
     margin-left: -1px;
     bottom: 0;
-  white-space: nowrap;
-    
-    .cercle{
+    white-space: nowrap;
+
+    .cercle {
       position: absolute;
       left: 0;
-      top:0;
+      top: 0;
       margin-left: - $cercle-size / 2;
     }
   }
-  .cercle{
+  .cercle {
     display: block;
     height: $cercle-size;
     width: $cercle-size;
-    border-radius:  $cercle-size;
+    border-radius: $cercle-size;
     background-color: $brightturquoise;
-    }
-  
+  }
 }
 </style>
