@@ -62,64 +62,80 @@ export default {
   left: 0;
   z-index: 1030;
   padding-top: 1em;
-}
 
-.logo-min {
-  float: left;
-  margin-top: 0.5em;
-  margin-right: -1px;
-  opacity: 0;
-  visibility: hidden;
-  &.show {
-    opacity: 1;
-    visibility: visible;
-  }
-  path {
-    fill: $black;
-  }
-}
 
-ul.navbt {
-  list-style-type: none;
-  padding: 0;
-  float: right;
-  li {
-    display: inline-block;
-    margin: 0 0 0 1rem;
-  }
-}
-
-.button-square {
-  color: $black;
-  font-size: 1em;
-  margin: 0;
-  padding: 0;
-  border: 0.5px solid $black;
-  height: 3.5em;
-  width: 3.5em;
-  line-height: 1.5em;
-  position: relative;
-  * {
-    height: 1.5em;
-    width: 1.5em;
-    display: block;
-    position: absolute;
-    top: 50%;
-    margin-top: -0.75em;
-    margin-left: -0.75em;
-    left: 50%;
+  .logo-min {
+    float: left;
+    margin-top: 0.5em;
+    padding-top: 4px;
+    margin-right: -1px;
+    opacity: 0;
+    visibility: hidden;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
     path {
       fill: $black;
     }
   }
 
-  &:hover {
-    border-color: $brightturquoise;
+  ul.navbt {
+    list-style-type: none;
+    padding: 0;
+    float: right;
+    li {
+      display: inline-block;
+      margin: 0 0 0 1rem;
+    }
   }
-  &.noborder {
-    border-color: transparent;
-    border-radius: 1.5em;
-    display: none;
+
+  .button-square {
+    color: $black;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    border: 0.5px solid $black;
+    height: 3.5em;
+    width: 3.5em;
+    line-height: 1.5em;
+    position: relative;
+    * {
+      height: 1.5em;
+      width: 1.5em;
+      display: block;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.75em;
+      margin-left: -0.75em;
+      left: 50%;
+      path {
+        fill: $black;
+      }
+    }
+
+    &:hover {
+      border-color: $brightturquoise;
+    }
+    &.noborder {
+      border-color: transparent;
+      border-radius: 1.5em;
+      display: none;
+    }
+  } 
+  //header is all white
+  &.white {
+    .logo-min,
+    .button-square {
+      color: $white;
+      border-color: $white;
+      &:hover {
+        border-color: $brightturquoise;
+      }
+    }
+    path {
+      fill: $white;
+    }
   }
 }
 </style>
