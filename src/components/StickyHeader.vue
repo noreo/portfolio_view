@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link class="logo-min" v-bind:class="{ show: isLogoVisible }" to="/">
+      <router-link class="logo-min" to="/">
         <svgicon name="logo-min" width="30" height="30" color=""></svgicon>
       </router-link>
       <ul class="navbt">
@@ -29,24 +29,7 @@
 <script>
 
 export default {
-  name: 'header',
-  data() {
-    return {
-      isLogoVisible: false
-    };
-  },
-  methods: {
-    handleScroll() {
-      //window.innerHeight
-      this.isLogoVisible = (window.scrollY > 5);
-    }
-  },
-  beforeMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
+  name: 'header'
 }
 
 </script>
@@ -55,6 +38,7 @@ export default {
 <style lang="scss">
 @import '../global_scss/colors.scss';
 @import '../global_scss/base/_variables.scss';
+
 .navbar {
   position: fixed;
   top: 0;
@@ -71,10 +55,6 @@ export default {
     margin-right: -1px;
     opacity: 0;
     visibility: hidden;
-    &.show {
-      opacity: 1;
-      visibility: visible;
-    }
     path {
       fill: $black;
     }
@@ -122,8 +102,7 @@ export default {
       border-radius: 1.5em;
       display: none;
     }
-  } 
-  //header is all white
+  } //header is all white
   &.white {
     .logo-min,
     .button-square {
@@ -137,5 +116,10 @@ export default {
       fill: $white;
     }
   }
+}
+
+.navbar.showlogo .logo-min {
+  opacity: 1;
+  visibility: visible;
 }
 </style>

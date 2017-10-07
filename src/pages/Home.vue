@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <StickyHeader class="white" />
+    <StickyHeader class="white" v-bind:class="{ showlogo: isLogoVisible }" />
     <header class="cover">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
         <h1 v-html="intro"></h1>
-        <div class="vl">
+        <div class="vl" v-bind:class="{ hide: isVlineHidden }">
           <span class="cercle" v-bind:class="{ animate: isCercleVisible }"></span>
         </div>
       </div>
@@ -17,7 +17,7 @@
 
 <script>
 import StickyHeader from '../components/StickyHeader';
-
+var inteval;
 export default {
   name: 'home',
   components: {
@@ -25,22 +25,41 @@ export default {
   },
   data() {
     return {
-      intro: 'My name is Aurélien, <br>I make digital experiences for humans.', 
-      isCercleVisible: false
-    }
-  }, 
-   methods: {
-    handleTime() {
-      this.isCercleVisible = !this.isCercleVisible;
+      intro: 'My name is Aurélien, <br>I make digital experiences for humans.',
+      isCercleVisible: false,
+      isLogoVisible: false,
+      isVlineHidden: false
     }
   },
-  mounted: function () {
-  this.$nextTick(function () {
-    // Code that will run only after the
-    // entire view has been rendered
-    window.setInterval(this.handleTime, 3000)
-  })
-}
+  methods: {
+    handleTime() {
+      this.isCercleVisible = !this.isCercleVisible;
+    },
+    handleScroll() {
+      //window.innerHeight
+      var isTop = (window.scrollY > 5);
+
+      this.isLogoVisible = isTop;
+      this.isVlineHidden = isTop;
+
+      if (!isTop) {
+        clearInterval(inteval);
+        this.isCercleVisible = false; //reset
+      }
+
+    }
+  },
+  mounted: function() {
+    // Code that will run only after the entire view has been rendered
+    inteval = window.setInterval(this.handleTime, 3000);
+
+  },
+  beforeMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 }
 </script>
 
@@ -49,22 +68,21 @@ export default {
 @import '../global_scss/colors.scss';
 $vl-height:8em;
 $cercle-size:1em;
-body{
+body {
 
-  background: $deepspace;
-  //background: -webkit-linear-gradient(to bottom, #414345, #232526);
-  background: linear-gradient(to bottom, $deepspace, #070C2A);
+  background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
+ // background: linear-gradient(to bottom, $deepspace, #070C2A);
+  background: linear-gradient(to bottom, $deepspace,  #070C2A, #281b47);
 }
+
 .home {
-  background: repeating-linear-gradient(
-  rgba(0, 0, 0, 0),
+  background: repeating-linear-gradient( rgba(0, 0, 0, 0),
   rgba(0, 0, 0, 0) 2px,
-  rgba(0, 0, 0, 0.2) 2px,
-  rgba(0, 0, 0, 0.2) 4px
-);
- & *{
-   color:$white;
- }
+  rgba(0, 0, 0, 0.3) 2px,
+  rgba(0, 0, 0, 0.3) 4px);
+  & * {
+    color: $white;
+  }
 }
 
 .cover {
@@ -117,18 +135,19 @@ body{
       top: 0;
       margin-left: - $cercle-size / 2;
     }
+    &.hide {
+      opacity: 0;
+    }
   }
   .cercle {
     display: block;
-    opacity: 1;
     height: $cercle-size;
     width: $cercle-size;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
     transition: transform 1s;
-      transition-timing-function: cubic-bezier(0.33, 0.00, 0.67, 1.00);
-    &.animate{
-      opacity: 1;
+    transition-timing-function: cubic-bezier(0.33, 0.00, 0.67, 1.00);
+    &.animate {
       transform: translateY($vl-height);
     }
   }
