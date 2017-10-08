@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -31,6 +32,11 @@ body {
   text-align: center;
   color: $black;
   margin:0;
+  h3{
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: normal;
+  }
 }
 
 .fade-enter-active,

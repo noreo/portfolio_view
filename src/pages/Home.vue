@@ -10,6 +10,7 @@
         </div>
       </div>
     </header>
+    <HomeProject client="Brewster Club"/>
     <router-link to="/">Go to Hellooo</router-link>
     <router-link to="/bye">Go to Bye</router-link>
   </div>
@@ -17,11 +18,13 @@
 
 <script>
 import StickyHeader from '../components/StickyHeader';
+import HomeProject from '../components/HomeProject';
 var inteval;
 export default {
   name: 'home',
   components: {
-    StickyHeader
+    StickyHeader,
+    HomeProject
   },
   data() {
     return {
@@ -71,8 +74,8 @@ $cercle-size:1em;
 body {
 
   background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
- // background: linear-gradient(to bottom, $deepspace, #070C2A);
-  background: linear-gradient(to bottom, $deepspace,  #070C2A, #281b47);
+  // background: linear-gradient(to bottom, $deepspace, #070C2A);
+  background: linear-gradient(to bottom, $deepspace, #070C2A, #281b47);
 }
 
 .home {
@@ -150,6 +153,15 @@ body {
     &.animate {
       transform: translateY($vl-height);
     }
+  }
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
   }
 }
 </style>
