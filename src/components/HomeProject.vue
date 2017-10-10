@@ -8,7 +8,9 @@
         </div>
         <h2>{{ title }}</h2>
         <p>{{ details }}</p>
-            <router-link class="button color-brew" to="/bye">{{ cta_msg }}</router-link>
+        <div class="goto-container">
+            <router-link class="button" to="/bye">{{ cta_msg }}</router-link>
+        </div>
 
     </div>
 </template>
@@ -17,7 +19,7 @@
 
 export default {
     name: 'bye',
-    props: ['project','client', 'title', 'details'],
+    props: ['project', 'client', 'title', 'details'],
     data() {
         return {
             cta_msg: 'View project',
@@ -30,9 +32,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.home-project{
-      min-height: 100vh;
+.home-project {
+    min-height: 100vh;
+    .goto-container {
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        .button {
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 9999px;
+            height: 1px;
+            background: #FC3699;
+            left:100%;
+            margin-left:1em;
+        }
+        }
+    }
 }
+
 .ipad {
     position: relative;
     max-width: 100%;
@@ -44,8 +68,7 @@ export default {
         top: 0;
         right: 0;
         bottom: 0;
-        left: 0;
-       // max-width: 100%;
+        left: 0; // max-width: 100%;
         width: 100%;
         padding: 3.5% 7.22% 0 7%;
         height: auto;
