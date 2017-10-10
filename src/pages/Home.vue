@@ -1,18 +1,18 @@
 <template>
   <div class="home">
-    <StickyHeader class="white" v-bind:class="{ showlogo: isLogoVisible }" />
+    <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />
     <header class="cover">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
         <h1 v-html="intro"></h1>
-        <div class="vl" v-bind:class="{ hide: isVlineHidden }">
+        <div class="vl" v-bind:class="{ hide: isOnScroll }">
           <span class="cercle" v-bind:class="{ animate: isCercleVisible }"></span>
         </div>
       </div>
     </header>
-    <HomeProject client="Brewster Club"/>
-    <router-link to="/">Go to Hellooo</router-link>
-    <router-link to="/bye">Go to Bye</router-link>
+    <div class="container">
+      <HomeProject project="brew" client="Brewster Club" title="Brewster’s branding &amp; eCommerce website" details="Art direction, UX design &amp; UI design / Human Equation / 2016" />
+    </div>
   </div>
 </template>
 
@@ -30,8 +30,7 @@ export default {
     return {
       intro: 'My name is Aurélien, <br>I make digital experiences for humans.',
       isCercleVisible: false,
-      isLogoVisible: false,
-      isVlineHidden: false
+      isOnScroll: false
     }
   },
   methods: {
@@ -42,8 +41,7 @@ export default {
       //window.innerHeight
       var isTop = (window.scrollY > 5);
 
-      this.isLogoVisible = isTop;
-      this.isVlineHidden = isTop;
+      this.isOnScroll = isTop;
 
       if (!isTop) {
         clearInterval(inteval);
@@ -76,6 +74,7 @@ body {
   background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
   // background: linear-gradient(to bottom, $deepspace, #070C2A);
   background: linear-gradient(to bottom, $deepspace, #070C2A, #281b47);
+  background-attachment: fixed;
 }
 
 .home {
@@ -86,6 +85,7 @@ body {
   & * {
     color: $white;
   }
+  background-attachment: fixed;
 }
 
 .cover {

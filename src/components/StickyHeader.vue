@@ -6,17 +6,17 @@
       </router-link>
       <ul class="navbt">
         <li>
-          <button class="button button-square noborder">
+          <button class=" button-square noborder">
             <svgicon name="sound" width="24" height="24" color=""></svgicon>
           </button>
         </li>
         <li>
-          <button class="button button-square">
+          <button class=" button-square visible-top">
             <span>Fr</span>
           </button>
         </li>
         <li>
-          <button class="button button-square">
+          <button class=" button-square">
             <svgicon name="contact" width="24" height="24" color=""></svgicon>
           </button>
         </li>
@@ -118,8 +118,14 @@ export default {
   }
 }
 
-.navbar.showlogo .logo-min {
-  opacity: 1;
-  visibility: visible;
+.navbar.onscroll {
+  .logo-min {
+    opacity: 1;
+    visibility: visible;
+  }
+  .visible-top{
+    opacity: 0;
+    visibility: visible;
+  }
 }
 </style>

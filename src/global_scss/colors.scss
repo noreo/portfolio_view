@@ -12,5 +12,20 @@ $bve-torchred: #F41616;
 $bve-linkwater: #EDF5FA;
 $brew-muesli: #AB7B5D;
 $brew-seashell: #FFF6F0;
-$ledevoir-purple: #6C3C9F;
+$ledevoir-purple: #DDC9F1;
 $ledevoir-lavender: #F0F6FC;
+
+//project colors
+$projects: 'adidas' 'bve' 'brew' 'ledevoir';
+$colors-primary: $adidas-lipstick $bve-torchred $brew-muesli $ledevoir-purple;
+@each $current-color in $colors-primary {
+    $i: index($colors-primary, $current-color);
+    $p: nth($projects, $i);
+    .color-#{$p} { 
+        color: $current-color;
+    }
+    .border-#{$p} { 
+        border-color: $current-color;
+    }
+}
+//secondary project colors
