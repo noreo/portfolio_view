@@ -33,6 +33,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: $black;
   margin: 0;
+  overflow: hidden; //prevent "goto" line to out of the screen
   h2 {
     font-size: 2.5em;
     line-height: 1.1;

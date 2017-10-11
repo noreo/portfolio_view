@@ -34,10 +34,12 @@ export default {
 <style lang="scss" scoped>
 .home-project {
     min-height: 100vh;
+        overflow: visible;
+    
     .goto-container {
         height: 100%;
         display: block;
-        overflow: hidden;
+        overflow: visible;
         white-space: nowrap;
         .button {
             margin: 0;
