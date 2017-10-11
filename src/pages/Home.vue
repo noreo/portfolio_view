@@ -11,7 +11,7 @@
       </div>
     </header>
     <div class="container">
-      <HomeProject project="brew" client="Brewster Club" title="Brewster’s branding &amp; eCommerce website" details="Art direction, UX design &amp; UI design / Human Equation / 2016" />
+      <HomeProject projectname="brew" client="Brewster Club" title="Brewster’s branding &amp; eCommerce website" details="Art direction, UX design &amp; UI design / Human Equation / 2016" />
     </div>
   </div>
 </template>

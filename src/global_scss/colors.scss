@@ -27,5 +27,11 @@ $colors-primary: $adidas-lipstick $bve-torchred $brew-muesli $ledevoir-purple;
     .border-#{$p} { 
         border-color: $current-color;
     }
+    .after-#{$p}:after{
+        background-color: $current-color !important;
+    }
 }
+//
+
 //secondary project colors
+//DOTO

@@ -11,7 +11,7 @@
           </button>
         </li>
         <li>
-          <button class=" button-square visible-top">
+          <button class="button-square visible-top">
             <span>Fr</span>
           </button>
         </li>

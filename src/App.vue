@@ -54,8 +54,8 @@ body {
     height: 42px;
     line-height: 42px;
     border-color: $white;
-    &:hover{
       color:$white;
+    &:hover{
       border-color: $brightturquoise;
       background-color: $black;
     }

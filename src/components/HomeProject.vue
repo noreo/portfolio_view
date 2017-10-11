@@ -1,7 +1,7 @@
 <template>
     <div class="home-project">
 
-        <h3>{{ client }}</h3>
+        <h3 v-bind:class="textClass">{{ client }}</h3>
         <div class="ipad">
             <img class="cover" src="../assets/projects/brewster/cover.jpg" title="brewster club" alt="brewster club">
             <svgicon class="case" title="ipag back" name="templates/ipad" color=""></svgicon>
@@ -9,7 +9,7 @@
         <h2>{{ title }}</h2>
         <p>{{ details }}</p>
         <div class="goto-container">
-            <router-link class="button" to="/bye">{{ cta_msg }}</router-link>
+            <router-link class="button" v-bind:class="lineClass" to="/bye">{{ cta_msg }}</router-link>
         </div>
 
     </div>
@@ -19,11 +19,12 @@
 
 export default {
     name: 'bye',
-    props: ['project', 'client', 'title', 'details'],
+    props: ['projectname', 'client', 'title', 'details'],
     data() {
         return {
             cta_msg: 'View project',
-            fileName: 'cover.jpg'
+            lineClass: 'after-'+this.projectname,
+            textClass: 'color-'+this.projectname,
         }
     }
 }
@@ -32,6 +33,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import '../global_scss/colors.scss';
+
 .home-project {
     min-height: 100vh;
         overflow: visible;
@@ -51,7 +54,7 @@ export default {
             top: 50%;
             width: 9999px;
             height: 1px;
-            background: #FC3699;
+            background: $white;
             left:100%;
             margin-left:1em;
         }
