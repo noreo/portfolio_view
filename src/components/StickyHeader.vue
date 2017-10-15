@@ -11,14 +11,14 @@
           </button>
         </li>
         <li>
-          <button class="button-square visible-top">
+          <router-link class="button-square visible-top" to="/fr">
             <span>Fr</span>
-          </button>
+          </router-link>
         </li>
         <li>
-          <button class=" button-square">
+          <a href="#" class=" button-square">
             <svgicon name="contact" width="24" height="24" color=""></svgicon>
-          </button>
+          </a>
         </li>
       </ul>
 
@@ -71,6 +71,8 @@ export default {
   }
 
   .button-square {
+    text-transform: uppercase;
+    text-align: center;
     color: $black;
     font-size: 1em;
     margin: 0;
@@ -80,6 +82,7 @@ export default {
     width: 3.5em;
     line-height: 1.5em;
     position: relative;
+    display: inline-block;
     * {
       height: 1.5em;
       width: 1.5em;

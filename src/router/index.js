@@ -11,6 +11,13 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+      
+    },
+    {
+      path: '/fr',
+      name: 'Home',
+      component: Home,
+      props: { lang: 'fr' }
     },
     { path: '/bye', component: Bye }
   ]

@@ -11,17 +11,25 @@
       </div>
     </header>
     <div class="container">
-      <HomeProject projectname="brew" client="Brewster Club" title="Brewster’s branding &amp; eCommerce website" details="Art direction, UX design &amp; UI design / Human Equation / 2016" />
+      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" />
     </div>
   </div>
 </template>
 
 <script>
+
 import StickyHeader from '../components/StickyHeader';
 import HomeProject from '../components/HomeProject';
 var inteval;
 export default {
   name: 'home',
+  props: {
+    lang: {
+      type: String,
+      default: 'en'
+    }
+  },
+
   components: {
     StickyHeader,
     HomeProject
@@ -29,6 +37,11 @@ export default {
   data() {
     return {
       intro: 'My name is Aurélien, <br>I make digital experiences for humans.',
+      projects: [
+        { "ref":"brew", "client":"Brewster Club", "title":"Brewster’s branding & eCommerce website", "details":"Art direction, UX design & UI design / Human Equation / 2016"},
+        { "ref":"adidas", "client":"adidas", "title":"Brewster’s branding & eCommerce website", "details":"Art direction, UX design & UI design / Human Equation / 2016"}
+      ],
+
       isCercleVisible: false,
       isOnScroll: false
     }
