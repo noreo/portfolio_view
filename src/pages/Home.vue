@@ -11,7 +11,7 @@
       </div>
     </header>
     <div class="container">
-      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" />
+      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :urlcover="pathCover" />
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@
 
 import StickyHeader from '../components/StickyHeader';
 import HomeProject from '../components/HomeProject';
+import Data from '../assets/data_en.json';
 var inteval;
 export default {
   name: 'home',
@@ -27,8 +28,12 @@ export default {
     lang: {
       type: String,
       default: 'en'
-    }
+    },
+    projects_path:"../assets/projects/",
+    pathCover: require('../assets/projects/brew/cover.jpg')
+
   },
+
 
   components: {
     StickyHeader,
@@ -36,12 +41,8 @@ export default {
   },
   data() {
     return {
-      intro: 'My name is Aurélien, <br>I make digital experiences for humans.',
-      projects: [
-        { "ref":"brew", "client":"Brewster Club", "title":"Brewster’s branding & eCommerce website", "details":"Art direction, UX design & UI design / Human Equation / 2016"},
-        { "ref":"adidas", "client":"adidas", "title":"Brewster’s branding & eCommerce website", "details":"Art direction, UX design & UI design / Human Equation / 2016"}
-      ],
-
+      intro: Data.intro,
+      projects: Data.projects,
       isCercleVisible: false,
       isOnScroll: false
     }
