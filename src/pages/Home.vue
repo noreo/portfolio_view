@@ -11,7 +11,7 @@
       </div>
     </header>
     <div class="container">
-      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :urlcover="pathCover" />
+      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="pathCover" />
     </div>
   </div>
 </template>
@@ -21,6 +21,9 @@
 import StickyHeader from '../components/StickyHeader';
 import HomeProject from '../components/HomeProject';
 import Data from '../assets/data_en.json';
+//url_proj : '../static/assets/projects/'
+import config from '../config';
+
 var inteval;
 export default {
   name: 'home',
@@ -28,12 +31,8 @@ export default {
     lang: {
       type: String,
       default: 'en'
-    },
-    projects_path:"../assets/projects/",
-    pathCover: require('../assets/projects/brew/cover.jpg')
-
+    }
   },
-
 
   components: {
     StickyHeader,
@@ -44,7 +43,9 @@ export default {
       intro: Data.intro,
       projects: Data.projects,
       isCercleVisible: false,
-      isOnScroll: false
+      isOnScroll: false,
+      pathCover: config.url_proj + '/brew/cover.jpg'
+      
     }
   },
   methods: {

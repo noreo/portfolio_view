@@ -3,7 +3,7 @@
 
         <h3 v-bind:class="textClass">{{ client }}</h3>
         <div class="ipad">
-            <img class="cover" v-bind:src="pathCover" title="brewster club" alt="brewster club">
+            <img class="cover" v-bind:src="pathcover" title="brewster club" alt="brewster club">
             <svgicon class="case" title="ipag back" name="templates/ipad" color=""></svgicon>
         </div>
         <h2>{{ title }}</h2>
@@ -19,16 +19,18 @@
 
 export default {
     name: 'bye',
-    props: ['projectname', 'client', 'title', 'details', 'urlcover'],
+    props: ['projectname', 'client', 'title', 'details', 'pathcover'],
     data() {
         return {
             cta_msg: 'View project',
             lineClass: 'after-'+this.projectname,
-            textClass: 'color-'+this.projectname,
-            pathCover: require('../assets/projects/brew/cover.jpg')
-
+            textClass: 'color-'+this.projectname
         }
-    }
+    },
+    mounted: function() {
+  console.log(this.pathcover)
+}
+    
 }
 
 </script>
