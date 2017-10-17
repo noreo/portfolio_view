@@ -11,7 +11,7 @@
       </div>
     </header>
     <div class="container">
-      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="pathCover" />
+      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/cover.jpg'" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import StickyHeader from '../components/StickyHeader';
 import HomeProject from '../components/HomeProject';
 import Data from '../assets/data_en.json';
-//url_proj : '../static/assets/projects/'
+var url_proj = '../static/assets/projects/'
 import config from '../config';
 
 var inteval;
@@ -44,7 +44,7 @@ export default {
       projects: Data.projects,
       isCercleVisible: false,
       isOnScroll: false,
-      pathCover: config.url_proj + '/brew/cover.jpg'
+      urlProj: config.url_proj
       
     }
   },
@@ -68,7 +68,7 @@ export default {
   mounted: function() {
     // Code that will run only after the entire view has been rendered
     inteval = window.setInterval(this.handleTime, 3000);
-
+    console.log(config.url_proj);
   },
   beforeMount() {
     window.addEventListener('scroll', this.handleScroll);
