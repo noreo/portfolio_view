@@ -6,8 +6,11 @@
             "client": "Brewster Club",
             "title": "Brewster’s branding & eCommerce website",
             "details": "Art direction, UX design & UI design / Human Equation / 2016",
-            "images":{
-                "cover":"cover.jpg"
+            "images": {
+                "cover": {
+                    "file": "cover.jpg",
+                    "type": "ipad"
+                }
             }
         },
         {
@@ -15,8 +18,11 @@
             "client": "adidas",
             "title": "Brewster’s branding & eCommerce website",
             "details": "Art direction, UX design & UI design / Human Equation / 2016",
-            "images":{
-                "cover":"cover.jpg"
+            "images": {
+                "cover": {
+                    "file": "cover.jpg",
+                    "type": "ipad"
+                }
             }
         }
     ]
