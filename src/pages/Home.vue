@@ -11,7 +11,7 @@
       </div>
     </header>
     <div class="container">
-      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/cover.jpg'" />
+      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/'+project.images.cover.file" />
     </div>
   </div>
 </template>
@@ -90,6 +90,7 @@ body {
   // background: linear-gradient(to bottom, $deepspace, #070C2A);
   background: linear-gradient(to bottom, $deepspace, #070C2A, #281b47);
   background-attachment: fixed;
+  background-size: 200% 200%;
 }
 
 .home {
