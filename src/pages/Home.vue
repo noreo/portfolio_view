@@ -17,20 +17,22 @@
 </template>
 
 <script>
-
-import StickyHeader from '../components/StickyHeader';
-import HomeProject from '../components/HomeProject';
-import Data from '../assets/data_en.json';
-var url_proj = '../static/assets/projects/'
-import config from '../config';
+import StickyHeader from "../components/StickyHeader";
+import HomeProject from "../components/HomeProject";
+import Data from "../assets/data_en.json";
+var url_proj = "../static/assets/projects/";
+import config from "../config";
 
 var inteval;
+var docHeight;
+var windowHeight;
+
 export default {
-  name: 'home',
+  name: "home",
   props: {
     lang: {
       type: String,
-      default: 'en'
+      default: "en"
     }
   },
 
@@ -45,8 +47,7 @@ export default {
       isCercleVisible: false,
       isOnScroll: false,
       urlProj: config.url_proj
-      
-    }
+    };
   },
   methods: {
     handleTime() {
@@ -54,50 +55,67 @@ export default {
     },
     handleScroll() {
       //window.innerHeight
-      var isTop = (window.scrollY > 5);
+      var wscroll = window.scrollY;
 
+      var isTop = wscroll > 5;
       this.isOnScroll = isTop;
-
       if (!isTop) {
         clearInterval(inteval);
         this.isCercleVisible = false; //reset
       }
 
+      //moving background
+      console.log(docHeight);
+      var bgPosition = wscroll / (docHeight - windowHeight) * 100;
+      document.body.style.backgroundPosition = "0 " + bgPosition + "%";
     }
   },
   mounted: function() {
     // Code that will run only after the entire view has been rendered
     inteval = window.setInterval(this.handleTime, 3000);
-    console.log(config.url_proj);
+    var body = document.body,
+      html = document.documentElement;
+
+    docHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
+
+    windowHeight = window.innerHeight;
+
+    //console.log(config.url_proj);
   },
   beforeMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" >
-@import '../global_scss/colors.scss';
-$vl-height:8em;
-$cercle-size:1em;
+@import "../global_scss/colors.scss";
+$vl-height: 8em;
+$cercle-size: 1em;
 body {
-
   background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
   // background: linear-gradient(to bottom, $deepspace, #070C2A);
- //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
-  background: linear-gradient(to bottom, $deepspace,#3f1739, $deepspace);
+  //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
+  background: linear-gradient(to bottom, $deepspace, #3f1739, $deepspace);
   background-attachment: fixed;
   background-size: 400% 400%;
+  transition: background-position none;
 
--webkit-animation: AnimationName 10s ease infinite;
--moz-animation: AnimationName 10s ease infinite;
-animation: AnimationName 10s ease infinite;
+  -webkit-animation: AnimationName 10s ease infinite;
+  -moz-animation: AnimationName 10s ease infinite;
+  animation: AnimationName 10s ease infinite;
 
-/*
+  /*
 @-webkit-keyframes AnimationName {
     0%{background-position:51% 0%}
     50%{background-position:50% 100%}
@@ -116,10 +134,12 @@ animation: AnimationName 10s ease infinite;
 }
 
 .home {
-  background: repeating-linear-gradient( rgba(0, 0, 0, 0),
-  rgba(0, 0, 0, 0) 2px,
-  rgba(0, 0, 0, 0.3) 2px,
-  rgba(0, 0, 0, 0.3) 4px);
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
   & * {
     color: $white;
   }
@@ -133,7 +153,7 @@ animation: AnimationName 10s ease infinite;
   display: block;
 
   &:before {
-    content: '';
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -187,7 +207,7 @@ animation: AnimationName 10s ease infinite;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
     transition: transform 1s;
-    transition-timing-function: cubic-bezier(0.33, 0.00, 0.67, 1.00);
+    transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
     &.animate {
       transform: translateY($vl-height);
     }
