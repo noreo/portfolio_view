@@ -88,14 +88,16 @@ body {
 
   background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
   // background: linear-gradient(to bottom, $deepspace, #070C2A);
-  background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
+ //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
+  background: linear-gradient(to bottom, $deepspace,#3f1739, $deepspace);
   background-attachment: fixed;
   background-size: 400% 400%;
-/*
+
 -webkit-animation: AnimationName 10s ease infinite;
 -moz-animation: AnimationName 10s ease infinite;
 animation: AnimationName 10s ease infinite;
 
+/*
 @-webkit-keyframes AnimationName {
     0%{background-position:51% 0%}
     50%{background-position:50% 100%}
