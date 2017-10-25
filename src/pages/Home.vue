@@ -24,8 +24,7 @@ var url_proj = "../static/assets/projects/";
 import config from "../config";
 
 var inteval;
-var docHeight;
-var windowHeight;
+var bottomScroll;
 
 export default {
   name: "home",
@@ -63,20 +62,21 @@ export default {
         clearInterval(inteval);
         this.isCercleVisible = false; //reset
       }
-
-      //moving background
-      console.log(docHeight);
-      var bgPosition = wscroll / (docHeight - windowHeight) * 100;
-      document.body.style.backgroundPosition = "0 " + bgPosition + "%";
+      if (wscroll >= bottomScroll)
+        document.body.style.backgroundPosition = "0 100%";
+        else
+        document.body.style.backgroundPosition = "0 0";
+        
     }
   },
   mounted: function() {
     // Code that will run only after the entire view has been rendered
     inteval = window.setInterval(this.handleTime, 3000);
+
     var body = document.body,
       html = document.documentElement;
 
-    docHeight = Math.max(
+    var docHeight = Math.max(
       body.scrollHeight,
       body.offsetHeight,
       html.clientHeight,
@@ -84,8 +84,7 @@ export default {
       html.offsetHeight
     );
 
-    windowHeight = window.innerHeight;
-
+    bottomScroll = docHeight - window.innerHeight;
     //console.log(config.url_proj);
   },
   beforeMount() {
@@ -108,14 +107,14 @@ body {
   //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
   background: linear-gradient(to bottom, $deepspace, #3f1739, $deepspace);
   background-attachment: fixed;
-  background-size: 400% 400%;
-  transition: background-position none;
+  background-size: 200% 200%;
+  //transition: background-position none;
 
+  /*
   -webkit-animation: AnimationName 10s ease infinite;
   -moz-animation: AnimationName 10s ease infinite;
   animation: AnimationName 10s ease infinite;
 
-  /*
 @-webkit-keyframes AnimationName {
     0%{background-position:51% 0%}
     50%{background-position:50% 100%}
