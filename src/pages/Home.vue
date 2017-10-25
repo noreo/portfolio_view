@@ -24,7 +24,6 @@ var url_proj = "../static/assets/projects/";
 import config from "../config";
 
 var inteval;
-var bottomScroll;
 
 export default {
   name: "home",
@@ -62,18 +61,13 @@ export default {
         clearInterval(inteval);
         this.isCercleVisible = false; //reset
       }
-      if (wscroll >= bottomScroll)
-        document.body.style.backgroundPosition = "0 100%";
-        else
-        document.body.style.backgroundPosition = "0 0";
-        
     }
   },
   mounted: function() {
     // Code that will run only after the entire view has been rendered
     inteval = window.setInterval(this.handleTime, 3000);
 
-    var body = document.body,
+   /* var body = document.body,
       html = document.documentElement;
 
     var docHeight = Math.max(
@@ -84,7 +78,7 @@ export default {
       html.offsetHeight
     );
 
-    bottomScroll = docHeight - window.innerHeight;
+    bottomScroll = docHeight - window.innerHeight; */
     //console.log(config.url_proj);
   },
   beforeMount() {
@@ -105,9 +99,9 @@ body {
   background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
   // background: linear-gradient(to bottom, $deepspace, #070C2A);
   //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
-  background: linear-gradient(to bottom, $deepspace, #3f1739, $deepspace);
+  background: linear-gradient(to bottom, $deepspace,#070C2A,  #3f1739);
   background-attachment: fixed;
-  background-size: 200% 200%;
+  background-size: 100% 100%;
   //transition: background-position none;
 
   /*
@@ -183,7 +177,7 @@ body {
   .vl {
     border-left: 1px solid $brightturquoise;
     height: $vl-height;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -1px;
     bottom: 0;
