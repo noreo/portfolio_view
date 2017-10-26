@@ -67,7 +67,7 @@ export default {
     // Code that will run only after the entire view has been rendered
     inteval = window.setInterval(this.handleTime, 3000);
 
-   /* var body = document.body,
+    /* var body = document.body,
       html = document.documentElement;
 
     var docHeight = Math.max(
@@ -95,11 +95,13 @@ export default {
 @import "../global_scss/colors.scss";
 $vl-height: 8em;
 $cercle-size: 1em;
+$cercle-amin: 7s;
+
 body {
   background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
   // background: linear-gradient(to bottom, $deepspace, #070C2A);
   //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
-  background: linear-gradient(to bottom, $deepspace,#070C2A,  #3f1739);
+  background: linear-gradient(to bottom, $deepspace, #070c2a, #3f1739);
   background-attachment: fixed;
   background-size: 100% 100%;
   //transition: background-position none;
@@ -199,11 +201,47 @@ body {
     width: $cercle-size;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
-    transition: transform 1s;
+    transition: transform ;
     transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
     &.animate {
-      transform: translateY($vl-height);
+      // transform: translateY($vl-height);
     }
+  }
+}
+$one-sec: 100 / $cercle-amin; //1 second in pourcentage
+
+@keyframes movecercle {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  43%{ //3sec
+    opacity: 1;
+    transform: translateY(0);
+    
+  }
+  57% { //1sec
+    opacity: 1;
+    transform: translateY($vl-height);
+  }
+  58% {
+    opacity: 0;
+    transform: translateY($vl-height);
+  }
+  59% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  97%{
+    opacity: 0;
+    transform: translateY(0);
+    
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+    
   }
 }
 
