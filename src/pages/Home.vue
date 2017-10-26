@@ -6,7 +6,7 @@
       <div class="intro">
         <h1 v-html="intro"></h1>
         <div class="vl" v-bind:class="{ hide: isOnScroll }">
-          <span class="cercle" v-bind:class="{ animate: isCercleVisible }"></span>
+          <span class="cercle" v-bind:class="{ animate: !isOnScroll }"></span>
         </div>
       </div>
     </header>
@@ -201,10 +201,10 @@ body {
     width: $cercle-size;
     border-radius: $cercle-size;
     background-color: $brightturquoise;
+    &.animate {
     transition: transform ;
     transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
     animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
-    &.animate {
       // transform: translateY($vl-height);
     }
   }
