@@ -42,30 +42,20 @@ export default {
     return {
       intro: Data.intro,
       projects: Data.projects,
-      isCercleVisible: false,
       isOnScroll: false,
       urlProj: config.url_proj
     };
   },
   methods: {
-    handleTime() {
-      this.isCercleVisible = !this.isCercleVisible;
-    },
     handleScroll() {
       //window.innerHeight
       var wscroll = window.scrollY;
 
       var isTop = wscroll > 5;
       this.isOnScroll = isTop;
-      if (!isTop) {
-        clearInterval(inteval);
-        this.isCercleVisible = false; //reset
-      }
     }
   },
   mounted: function() {
-    // Code that will run only after the entire view has been rendered
-    inteval = window.setInterval(this.handleTime, 3000);
 
     /* var body = document.body,
       html = document.documentElement;
@@ -229,14 +219,9 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
     opacity: 0;
     transform: translateY($vl-height);
   }
-  59% {
+  87%{
     opacity: 0;
-    transform: translateY(0);
-  }
-  97%{
-    opacity: 0;
-    transform: translateY(0);
-    
+    transform: translateY($vl-height);
   }
   100%{
     opacity: 1;
