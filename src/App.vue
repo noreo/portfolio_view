@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    
+
+        <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -8,16 +9,24 @@
 </template>
 
 <script>
-import './assets/icons';
-export default {
-  name: 'app'
-}
+import "./assets/icons";
+import StickyHeader from "./components/StickyHeader";
+import { onScroll } from './components/mixins/onscroll'
 
+
+export default {
+  name: "app",
+    mixins: [onScroll],
+
+  components: {
+    StickyHeader
+  }
+};
 </script>
 
 <style lang="scss">
-@import 'global_scss/global.scss';
-@import url('https://fonts.googleapis.com/css?family=Cantata+One');
+@import "global_scss/global.scss";
+@import url("https://fonts.googleapis.com/css?family=Cantata+One");
 html,
 body {
   font-size: 16px;
@@ -44,7 +53,7 @@ body {
     font-size: 20px;
     line-height: 24px;
     letter-spacing: normal;
-    font-family: 'Cantata One', serif;
+    font-family: "Cantata One", serif;
   }
   .button {
     font-size: 1em;
@@ -54,8 +63,8 @@ body {
     height: 42px;
     line-height: 42px;
     border-color: $white;
-      color:$white;
-    &:hover{
+    color: $white;
+    &:hover {
       border-color: $brightturquoise;
       background-color: $black;
     }
@@ -64,11 +73,11 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .5s
+  transition: opacity 0.5s;
 }
 
 .fade-enter,
 .fade-leave-to {
-  opacity: 0
+  opacity: 0;
 }
 </style>

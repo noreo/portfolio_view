@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />
+  <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />-->
     <header class="cover">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
@@ -10,7 +10,7 @@
         </div>
       </div>
     </header>
-    <div class="container">
+    <div class="container" id="fullpage">
       <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/'+project.images.cover.file" />
     </div>
   </div>
@@ -25,8 +25,11 @@ import config from "../config";
 
 var inteval;
 
+import { onScroll } from '../components/mixins/onscroll'
+
 export default {
   name: "home",
+  mixins: [onScroll],
   props: {
     lang: {
       type: String,
@@ -42,21 +45,11 @@ export default {
     return {
       intro: Data.intro,
       projects: Data.projects,
-      isOnScroll: false,
       urlProj: config.url_proj
     };
   },
-  methods: {
-    handleScroll() {
-      //window.innerHeight
-      var wscroll = window.scrollY;
-
-      var isTop = wscroll > 5;
-      this.isOnScroll = isTop;
-    }
-  },
+  methods: {},
   mounted: function() {
-
     /* var body = document.body,
       html = document.documentElement;
 
@@ -70,12 +63,6 @@ export default {
 
     bottomScroll = docHeight - window.innerHeight; */
     //console.log(config.url_proj);
-  },
-  beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
@@ -192,9 +179,9 @@ body {
     border-radius: $cercle-size;
     background-color: $brightturquoise;
     &.animate {
-    transition: transform ;
-    transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-    animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
+      transition: transform;
+      transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+      animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
       // transform: translateY($vl-height);
     }
   }
@@ -206,12 +193,13 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
     opacity: 1;
     transform: translateY(0);
   }
-  43%{ //3sec
+  43% {
+    //3sec
     opacity: 1;
     transform: translateY(0);
-    
   }
-  57% { //1sec
+  57% {
+    //1sec
     opacity: 1;
     transform: translateY($vl-height);
   }
@@ -219,14 +207,13 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
     opacity: 0;
     transform: translateY($vl-height);
   }
-  87%{
+  87% {
     opacity: 0;
     transform: translateY($vl-height);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0);
-    
   }
 }
 
