@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" id="fullpage">
   <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />-->
     <header class="cover">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
@@ -26,6 +26,10 @@ import config from "../config";
 var inteval;
 
 import { onScroll } from '../components/mixins/onscroll'
+
+var fullpage = require('../global_js/javascript.fullPage.min');
+
+//fullpage.initialize('#fullpage');
 
 export default {
   name: "home",

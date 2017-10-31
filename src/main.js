@@ -12,7 +12,6 @@ Vue.use(svgicon, {
 
 Vue.config.productionTip = false
 
-import full_page from './global_js/javascript.fullPage.min';
 
 
 /* eslint-disable no-new */
