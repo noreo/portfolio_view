@@ -25,9 +25,10 @@ import config from "../config";
 
 var inteval;
 
-import { onScroll } from '../components/mixins/onscroll'
+import { onScroll } from "../components/mixins/onscroll";
 
-var fullpage = require('../global_js/javascript.fullPage.min');
+//import fullpage from "../global_js/javascript.fullPage.min";
+//console.log(fullpage);
 
 //fullpage.initialize('#fullpage');
 
@@ -39,6 +40,12 @@ export default {
       type: String,
       default: "en"
     }
+  },
+  created() {
+    /*    let fullage = document.createElement("script");
+    fullage.setAttribute("src", "../static/global_js/javascript.fullPage.min.js");
+    document.head.appendChild(fullage);*/
+ 
   },
 
   components: {
@@ -54,6 +61,8 @@ export default {
   },
   methods: {},
   mounted: function() {
+       fullpage.initialize("#fullpage"); 
+    //$('#fullpage').fullpage();
     /* var body = document.body,
       html = document.documentElement;
 
