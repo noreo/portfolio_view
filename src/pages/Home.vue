@@ -1,7 +1,7 @@
 <template>
   <div class="home" id="fullpage">
   <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />-->
-    <header class="cover">
+    <header class="cover section">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
         <h1 v-html="intro"></h1>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </header>
-    <div class="container" id="fullpage">
+    <div class="container section">
       <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/'+project.images.cover.file" />
     </div>
   </div>
@@ -27,7 +27,7 @@ var inteval;
 
 import { onScroll } from "../components/mixins/onscroll";
 
-//import fullpage from "../global_js/javascript.fullPage.min";
+import fullpage from "../global_js/javascript.fullPage.min";
 //console.log(fullpage);
 
 //fullpage.initialize('#fullpage');
@@ -83,6 +83,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" >
 @import "../global_scss/colors.scss";
+@import '../global_js/javascript.fullPage.css';
 $vl-height: 8em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
