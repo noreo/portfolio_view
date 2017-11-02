@@ -59,6 +59,7 @@ export default {
   mounted: function() {
     fullpage.initialize("#fullpage", 
     {
+      'scrollBar': true, //allow window scroll event
       'onLeave': function(){
         console.log('coucu');
       },
