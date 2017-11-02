@@ -1,19 +1,21 @@
 <template>
+<div>
+        <div class="vl" v-bind:class="{ hide: isOnScroll }">
+          <span class="cercle" v-bind:class="{ animate: !isOnScroll }"></span>
+        </div>
   <div class="home" id="fullpage">
   <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />-->
     <header class="cover section">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
         <h1 v-html="intro"></h1>
-        <div class="vl" v-bind:class="{ hide: isOnScroll }">
-          <span class="cercle" v-bind:class="{ animate: !isOnScroll }"></span>
-        </div>
       </div>
     </header>
     <div class="container section">
       <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/'+project.images.cover.file" />
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -41,12 +43,6 @@ export default {
       default: "en"
     }
   },
-  created() {
-    /*    let fullage = document.createElement("script");
-    fullage.setAttribute("src", "../static/global_js/javascript.fullPage.min.js");
-    document.head.appendChild(fullage);*/
- 
-  },
 
   components: {
     StickyHeader,
@@ -61,7 +57,12 @@ export default {
   },
   methods: {},
   mounted: function() {
-       fullpage.initialize("#fullpage"); 
+    fullpage.initialize("#fullpage", 
+    {
+      'onLeave': function(){
+        console.log('coucu');
+      },
+    });
     //$('#fullpage').fullpage();
     /* var body = document.body,
       html = document.documentElement;
@@ -83,7 +84,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" >
 @import "../global_scss/colors.scss";
-@import '../global_js/javascript.fullPage.css';
+@import "../global_js/javascript.fullPage.css";
 $vl-height: 8em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
@@ -95,28 +96,6 @@ body {
   background: linear-gradient(to bottom, $deepspace, #070c2a, #3f1739);
   background-attachment: fixed;
   background-size: 100% 100%;
-  //transition: background-position none;
-
-  /*
-  -webkit-animation: AnimationName 10s ease infinite;
-  -moz-animation: AnimationName 10s ease infinite;
-  animation: AnimationName 10s ease infinite;
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:51% 0%}
-    50%{background-position:50% 100%}
-    100%{background-position:51% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:51% 0%}
-    50%{background-position:50% 100%}
-    100%{background-position:51% 0%}
-}
-@keyframes AnimationName {
-    0%{background-position:51% 0%}
-    50%{background-position:50% 100%}
-    100%{background-position:51% 0%}
-}*/
 }
 
 .home {
@@ -166,38 +145,37 @@ body {
     line-height: 1.3;
     letter-spacing: normal;
   }
+}
+.vl {
+  border-left: 1px solid $brightturquoise;
+  height: $vl-height;
+  position: fixed;
+  left: 50%;
+  margin-left: -1px;
+  bottom: 0;
+  white-space: nowrap;
 
-  .vl {
-    border-left: 1px solid $brightturquoise;
-    height: $vl-height;
-    position: fixed;
-    left: 50%;
-    margin-left: -1px;
-    bottom: 0;
-    white-space: nowrap;
-
-    .cercle {
-      position: absolute;
-      left: 0;
-      top: 0;
-      margin-left: - $cercle-size / 2;
-    }
-    &.hide {
-      opacity: 0;
-    }
-  }
   .cercle {
-    display: block;
-    height: $cercle-size;
-    width: $cercle-size;
-    border-radius: $cercle-size;
-    background-color: $brightturquoise;
-    &.animate {
-      transition: transform;
-      transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-      animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
-      // transform: translateY($vl-height);
-    }
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: - $cercle-size / 2;
+  }
+  &.hide {
+    opacity: 0;
+  }
+}
+.cercle {
+  display: block;
+  height: $cercle-size;
+  width: $cercle-size;
+  border-radius: $cercle-size;
+  background-color: $brightturquoise;
+  &.animate {
+    transition: transform;
+    transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
+    // transform: translateY($vl-height);
   }
 }
 $one-sec: 100 / $cercle-amin; //1 second in pourcentage
