@@ -52,12 +52,13 @@ export default {
     return {
       intro: Data.intro,
       projects: Data.projects,
-      urlProj: config.url_proj
+      urlProj: config.url_proj,
+      isOnScroll: false
     };
   },
   methods: {
-    handleScroll() {
-      this.$emit('update', true)
+    handleScroll(isTop) {
+      this.$emit('update', isTop)
     }
   },
   mounted: function() {
@@ -66,9 +67,10 @@ export default {
     fullpage.initialize("#fullpage", 
     {
      // 'scrollBar': true, //allow window scroll event
-      'onLeave': function(){
-        console.log('coucu');
-        comp.handleScroll();
+      'onLeave': function(index, nextIndex, direction){
+        let isTop = nextIndex == 1;
+        comp.handleScroll(isTop);
+        comp.isOnScroll = !isTop;
         
       },
     });
