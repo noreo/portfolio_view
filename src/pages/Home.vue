@@ -36,7 +36,7 @@ import fullpage from "../global_js/javascript.fullPage.min";
 
 export default {
   name: "home",
-  mixins: [onScroll],
+ // mixins: [onScroll],
   props: {
     lang: {
       type: String,
@@ -55,13 +55,21 @@ export default {
       urlProj: config.url_proj
     };
   },
-  methods: {},
+  methods: {
+    handleScroll() {
+      this.$emit('update', true)
+    }
+  },
   mounted: function() {
+     var comp = this;
+    
     fullpage.initialize("#fullpage", 
     {
-      'scrollBar': true, //allow window scroll event
+     // 'scrollBar': true, //allow window scroll event
       'onLeave': function(){
         console.log('coucu');
+        comp.handleScroll();
+        
       },
     });
     //$('#fullpage').fullpage();
