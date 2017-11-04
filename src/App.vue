@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-        <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />
+        <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />
     <transition name="fade" mode="out-in">
       <router-view @update="updateOnScroll"></router-view>
     </transition>
@@ -16,10 +16,10 @@ import { onScroll } from './components/mixins/onscroll'
 
 export default {
   name: "app",
-    mixins: [onScroll], //return isOnScroll
+    mixins: [onScroll], //return isScrolled
     methods:{
-      updateOnScroll(isTop){
-        this.isOnScroll = !isTop;
+      updateOnScroll(scrolled){
+        this.isScrolled = scrolled;
       }
     }
 ,

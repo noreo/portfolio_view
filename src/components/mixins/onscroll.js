@@ -1,10 +1,10 @@
 export const onScroll = {
     data() {
-      return {isOnScroll: false};
+      return {isScrolled: false};
     },
     methods: {
       handleScroll() {
-        this.isOnScroll = window.scrollY > 5; //if is top: false
+        this.isScrolled = window.scrollY > 5; //if is top: false
       }
     },
     beforeMount() {

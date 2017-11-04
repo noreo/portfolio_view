@@ -1,10 +1,10 @@
 <template>
 <div>
-        <div class="vl" v-bind:class="{ hide: isOnScroll }">
-          <span class="cercle" v-bind:class="{ animate: !isOnScroll }"></span>
+        <div class="vl" v-bind:class="{ hide: isScrolled }">
+          <span class="cercle" v-bind:class="{ animate: !isScrolled }"></span>
         </div>
   <div class="home" id="fullpage">
-  <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isOnScroll }" />-->
+  <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
     <header class="cover section">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
@@ -53,7 +53,7 @@ export default {
       intro: Data.intro,
       projects: Data.projects,
       urlProj: config.url_proj,
-      isOnScroll: false
+      isScrolled: false
     };
   },
   methods: {
@@ -68,9 +68,9 @@ export default {
     {
      // 'scrollBar': true, //allow window scroll event
       'onLeave': function(index, nextIndex, direction){
-        let isTop = nextIndex == 1;
-        comp.handleScroll(isTop);
-        comp.isOnScroll = !isTop;
+        let s = nextIndex != 1;
+        comp.handleScroll(s);
+        comp.isScrolled = s;
         
       },
     });
