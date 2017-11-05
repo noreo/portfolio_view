@@ -45,6 +45,15 @@ body {
   //font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   /* background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );*/
+  background-image: url('../static/assets/line.svg');
+  background-attachment: fixed;
+  background-size: 1px 4px;
   color: $black;
   margin: 0;
   overflow: hidden; //prevent "goto" line to out of the screen

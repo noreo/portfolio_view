@@ -1,5 +1,6 @@
 <template>
-    <div class="home-project">
+
+    <div class="home-project container section">
 
         <h3 v-bind:class="textClass">{{ client }}</h3>
         <div class="ipad">

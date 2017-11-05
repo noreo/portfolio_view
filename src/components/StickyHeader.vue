@@ -77,7 +77,7 @@ export default {
     font-size: 1em;
     margin: 0;
     padding: 0;
-    border: 0.5px solid $black;
+    border: 1px solid $black;
     height: 3.5em;
     width: 3.5em;
     line-height: 1.5em;

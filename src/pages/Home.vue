@@ -11,9 +11,7 @@
         <h1 v-html="intro"></h1>
       </div>
     </header>
-    <div class="container section">
       <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/'+project.images.cover.file" />
-    </div>
   </div>
 </div>
 </template>
@@ -30,9 +28,7 @@ var inteval;
 import { onScroll } from "../components/mixins/onscroll";
 
 import fullpage from "../global_js/javascript.fullPage.min";
-//console.log(fullpage);
 
-//fullpage.initialize('#fullpage');
 
 export default {
   name: "home",
@@ -66,11 +62,13 @@ export default {
     
     fullpage.initialize("#fullpage", 
     {
-     // 'scrollBar': true, //allow window scroll event
+      	'afterLoad': function(anchorLink, index){
+        },
       'onLeave': function(index, nextIndex, direction){
         let s = nextIndex != 1;
         comp.handleScroll(s);
         comp.isScrolled = s;
+        
         
       },
     });
@@ -110,16 +108,10 @@ body {
 }
 
 .home {
-  background: repeating-linear-gradient(
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) 2px,
-    rgba(0, 0, 0, 0.3) 2px,
-    rgba(0, 0, 0, 0.3) 4px
-  );
   & * {
     color: $white;
   }
-  background-attachment: fixed;
+  z-index: 0;
 }
 
 .cover {
@@ -165,6 +157,7 @@ body {
   margin-left: -1px;
   bottom: 0;
   white-space: nowrap;
+  z-index: 1;
 
   .cercle {
     position: absolute;
