@@ -56,7 +56,7 @@ body {
   margin: 0;
   overflow: hidden; //prevent "goto" line to out of the screen
   h2 {
-    font-size: 2.5em;
+    font-size: 2em; //2.5em on desktop
     line-height: 1.1;
     font-weight: 100;
     clear: both;
