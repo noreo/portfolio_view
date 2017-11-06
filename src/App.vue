@@ -68,6 +68,7 @@ body {
     line-height: 24px;
     letter-spacing: normal;
     font-family: "Cantata One", serif;
+    margin-bottom: 0.5rem; //mobile
   }
   .button {
     font-size: 1em;

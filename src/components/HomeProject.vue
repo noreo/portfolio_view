@@ -43,7 +43,6 @@ export default {
 .home-project {
     min-height: 100vh;
         overflow: visible;
-    
     .goto-container {
         height: 100%;
         display: block;
@@ -72,7 +71,7 @@ export default {
     max-width: 100%;
     height: auto;
     float: left;
-    margin-bottom: 2em;
+    margin-bottom: 0.5em; //mobile
     .cover {
         position: absolute;
         top: 0;

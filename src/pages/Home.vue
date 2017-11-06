@@ -29,10 +29,9 @@ import { onScroll } from "../components/mixins/onscroll";
 
 import fullpage from "../global_js/javascript.fullPage.min";
 
-
 export default {
   name: "home",
- // mixins: [onScroll],
+  // mixins: [onScroll],
   props: {
     lang: {
       type: String,
@@ -54,25 +53,26 @@ export default {
   },
   methods: {
     handleScroll(isTop) {
-      this.$emit('update', isTop)
+      this.$emit("update", isTop);
+    },
+    initFullpage() {
+      if (screen && screen.width > 400) {
+        var comp = this;
+
+        //if not mobile
+        fullpage.initialize("#fullpage", {
+          afterLoad: function(anchorLink, index) {},
+          onLeave: function(index, nextIndex, direction) {
+            let s = nextIndex != 1;
+            comp.handleScroll(s);
+            comp.isScrolled = s;
+          }
+        });
+      }
     }
   },
   mounted: function() {
-     var comp = this;
-    
-    fullpage.initialize("#fullpage", 
-    {
-      	'afterLoad': function(anchorLink, index){
-        },
-      'onLeave': function(index, nextIndex, direction){
-        let s = nextIndex != 1;
-        comp.handleScroll(s);
-        comp.isScrolled = s;
-        
-        
-      },
-    });
-    //$('#fullpage').fullpage();
+    this.initFullpage();
     /* var body = document.body,
       html = document.documentElement;
 
@@ -93,7 +93,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" >
 @import "../global_scss/colors.scss";
-@import "../global_js/javascript.fullPage.css";
+@import "../global_scss/base/_variables.scss";
+@media (#{$bp-larger-than-mobile}) {
+  @import "../global_js/javascript.fullPage.css";
+}
 $vl-height: 8em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
