@@ -123,6 +123,7 @@ export default {
 
 .navbar.onscroll {
   .logo-min {
+         transition-delay: 700ms;
     opacity: 1;
     visibility: visible;
   }

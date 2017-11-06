@@ -11,18 +11,16 @@
 <script>
 import "./assets/icons";
 import StickyHeader from "./components/StickyHeader";
-import { onScroll } from './components/mixins/onscroll'
-
+import { onScroll } from "./components/mixins/onscroll";
 
 export default {
   name: "app",
-    mixins: [onScroll], //return isScrolled
-    methods:{
-      updateOnScroll(scrolled){
-        this.isScrolled = scrolled;
-      }
+  mixins: [onScroll], //return isScrolled
+  methods: {
+    updateOnScroll(scrolled) {
+      this.isScrolled = scrolled;
     }
-,
+  },
   components: {
     StickyHeader
   }
@@ -45,13 +43,13 @@ body {
   //font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   /* background: repeating-linear-gradient(
+  /* background: repeating-linear-gradient(
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0) 2px,
     rgba(0, 0, 0, 0.3) 2px,
     rgba(0, 0, 0, 0.3) 4px
   );*/
-  background-image: url('../static/assets/line.svg');
+  background-image: url("../static/assets/line.svg");
   background-attachment: fixed;
   background-size: 1px 4px;
   color: $black;
@@ -62,6 +60,8 @@ body {
     line-height: 1.1;
     font-weight: 100;
     clear: both;
+    letter-spacing: 0.17px;
+    margin-bottom: 1rem;
   }
   h3 {
     font-size: 20px;
