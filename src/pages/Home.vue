@@ -94,9 +94,8 @@ export default {
 <style lang="scss" >
 @import "../global_scss/colors.scss";
 @import "../global_scss/base/_variables.scss";
-@media (#{$bp-larger-than-mobile}) {
-  @import "../global_js/javascript.fullPage.css";
-}
+@import "../global_js/javascript.fullPage.css";
+
 $vl-height: 8em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
