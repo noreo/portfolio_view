@@ -56,9 +56,8 @@ export default {
       this.$emit("update", isTop);
     },
     initFullpage() {
+      var comp = this;
       if (screen && screen.width > 400) {
-        var comp = this;
-
         //if not mobile
         fullpage.initialize("#fullpage", {
           afterLoad: function(anchorLink, index) {},
@@ -68,24 +67,21 @@ export default {
             comp.isScrolled = s;
           }
         });
+      } else {
+        //if mobile: no auto scroll
+        window.addEventListener("scroll", function() {
+          let s = window.scrollY > 5;
+          comp.handleScroll(s);
+          comp.isScrolled = s;
+        });
       }
     }
   },
   mounted: function() {
     this.initFullpage();
-    /* var body = document.body,
-      html = document.documentElement;
-
-    var docHeight = Math.max(
-      body.scrollHeight,
-      body.offsetHeight,
-      html.clientHeight,
-      html.scrollHeight,
-      html.offsetHeight
-    );
-
-    bottomScroll = docHeight - window.innerHeight; */
-    //console.log(config.url_proj);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll");
   }
 };
 </script>
