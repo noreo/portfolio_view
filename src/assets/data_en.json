@@ -16,12 +16,12 @@
         {
             "ref": "adidas",
             "client": "adidas",
-            "title": "Brewster’s branding & eCommerce website",
-            "details": "Art direction, UX design & UI design / Human Equation / 2016",
+            "title": "FIT SMART online campagne",
+            "details": "Art direction / Human Equation / 2015 ",
             "images": {
                 "cover": {
                     "file": "cover.jpg",
-                    "type": "ipad"
+                    "type": "none"
                 }
             }
         }

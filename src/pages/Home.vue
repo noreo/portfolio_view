@@ -11,13 +11,21 @@
         <h1 v-html="intro"></h1>
       </div>
     </header>
-      <HomeProject v-for="project in projects" :key="project.id" :projectname="project.ref" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj + '/'+project.ref+'/'+project.images.cover.file" />
+      <HomeProject v-for="project in projects" 
+      :key="project.id" 
+      :projectname="project.ref" 
+      :client="project.client" 
+      :title="project.title" 
+      :details="project.details" 
+      :pathcover="urlProj+project.ref+'/'+project.images.cover.file" 
+      :typecover="project.images.cover.type" 
+      />
   </div>
 </div>
 </template>
 
 <script>
-import StickyHeader from "../components/StickyHeader";
+//import StickyHeader from "../components/StickyHeader";
 import HomeProject from "../components/HomeProject";
 import Data from "../assets/data_en.json";
 var url_proj = "../static/assets/projects/";
@@ -25,7 +33,7 @@ import config from "../config";
 
 var inteval;
 
-import { onScroll } from "../components/mixins/onscroll";
+//import { onScroll } from "../components/mixins/onscroll";
 
 import fullpage from "../global_js/javascript.fullPage.min";
 
@@ -40,7 +48,7 @@ export default {
   },
 
   components: {
-    StickyHeader,
+    // StickyHeader,
     HomeProject
   },
   data() {
@@ -56,32 +64,34 @@ export default {
       this.$emit("update", isTop);
     },
     initFullpage() {
+      console.log(screen.width);
       var comp = this;
-      if (screen && screen.width > 400) {
-        //if not mobile
-        fullpage.initialize("#fullpage", {
-          afterLoad: function(anchorLink, index) {},
-          onLeave: function(index, nextIndex, direction) {
-            let s = nextIndex != 1;
-            comp.handleScroll(s);
-            comp.isScrolled = s;
-          }
-        });
-      } else {
+      // if (screen && screen.width > 400) {
+      //if not mobile
+      fullpage.initialize("#fullpage", {
+        afterLoad: function(anchorLink, index) {},
+        onLeave: function(index, nextIndex, direction) {
+          let s = nextIndex != 1;
+          comp.handleScroll(s);
+          comp.isScrolled = s;
+        }
+      });
+      /* } else {
         //if mobile: no auto scroll
         window.addEventListener("scroll", function() {
           let s = window.scrollY > 5;
           comp.handleScroll(s);
           comp.isScrolled = s;
         });
-      }
+      }*/
     }
   },
   mounted: function() {
     this.initFullpage();
+    //  window.addEventListener("resize", this.initFullpage);
   },
   beforeDestroy() {
-    window.removeEventListener("scroll");
+    // window.removeEventListener("scroll");
   }
 };
 </script>
@@ -93,13 +103,12 @@ export default {
 @import "../global_js/javascript.fullPage.css";
 
 $vl-height: 8em;
+$vl-height-sm: 3em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
 
 body {
-  background: $deepspace; //background: -webkit-linear-gradient(to bottom, #414345, #232526);
-  // background: linear-gradient(to bottom, $deepspace, #070C2A);
-  //background: linear-gradient(to bottom, $deepspace,#281b47, #070C2A, #281b47);
+  background: $deepspace;
   background: linear-gradient(to bottom, $deepspace, #070c2a, #3f1739);
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -217,6 +226,15 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   }
   to {
     background-position: -10000px 5000px;
+  }
+}
+
+@media (#{$bp-larger-than-phablet}) and (orientation: landscape) {
+  .intro {
+    padding-bottom: $vl-height-sm;
+  }
+  .vl {
+    height: $vl-height-sm;
   }
 }
 </style>

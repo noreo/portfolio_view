@@ -35,7 +35,10 @@
 // For devices larger than 550px
 @media (#{$bp-larger-than-phablet}) {
   .container {
-    width: $container-width-larger-than-phablet;
+    //width: $container-width-larger-than-phablet;
+    width:100%;
+    padding-left:1rem;
+    padding-right: 1rem;
   }
   .column,
   .columns {
