@@ -3,6 +3,7 @@
     "projects": [
         {
             "ref": "brew",
+            "url": "brewsters-branding-website",
             "client": "Brewster Club",
             "title": "Brewster’s branding & eCommerce website",
             "details": "Art direction, UX design & UI design / Human Equation / 2016",
@@ -15,6 +16,7 @@
         },
         {
             "ref": "adidas",
+            "url": "adidas-fitsmart-compagne",
             "client": "adidas",
             "title": "FIT SMART online campagne",
             "details": "Art direction / Human Equation / 2015 ",
@@ -22,6 +24,32 @@
                 "cover": {
                     "file": "cover.jpg",
                     "type": "none"
+                }
+            }
+        },
+        {
+            "ref": "bve",
+            "url": "bernardvoyer.com",
+            "client": "Bernard Voyer",
+            "title": "bernardvoyer.com",
+            "details": "Art direction to web development / Verbal Pixel  / 2014",
+            "images": {
+                "cover": {
+                    "file": "cover.jpg",
+                    "type": "desktop"
+                }
+            }
+        },
+        {
+            "ref": "ledevoir",
+            "url": "ledevoir-app",
+            "client": "Le Devoir",
+            "title": "Le Devoir’s app",
+            "details": "UX design, UI design  /  Human equation  / 2015",
+            "images": {
+                "cover": {
+                    "file": "ledevoir-cover.jpg",
+                    "type": "ipad"
                 }
             }
         }

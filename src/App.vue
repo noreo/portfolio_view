@@ -81,7 +81,8 @@ body {
     color: $white;
     &:hover {
       border-color: $brightturquoise;
-      background-color: $black;
+      background-color: $deepspace;
+      box-shadow: 0 0 0 0.02em $brightturquoise;
     }
   }
 }

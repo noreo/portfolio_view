@@ -2,10 +2,14 @@
      <div class="container__img ipad" v-if="type === 'ipad'">
        <img class="cover" v-bind:src="pathcover" v-bind:title="title" v-bind:alt="title">
        <svgicon class="case" title="ipag back" name="templates/ipad" color=""></svgicon>
-        </div>
-        <div class="container__img  image" v-else-if="type === 'none'">
-            <img class="cover" v-bind:src="pathcover" v-bind:title="title" v-bind:alt="title">
-        </div>
+    </div>
+    <div class="container__img  desktop" v-else-if="type === 'desktop'">
+      <img class="cover" v-bind:src="pathcover" v-bind:title="title" v-bind:alt="title">
+       <svgicon class="case" title="ipag back" name="templates/desktop" color=""></svgicon>
+    </div>
+    <div class="container__img  image" v-else>
+        <img class="cover" v-bind:src="pathcover" v-bind:title="title" v-bind:alt="title">
+    </div>
 </template>
 
 <script>
@@ -16,16 +20,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style scoped lang="scss">
 .container__img {
-  //max-width: 100%;
-  width: 440px; //mobile
+  width: 21rem; //mobile
   height: auto;
   float: left;
-  margin-bottom: 0.5em; //mobile
-}
-.ipad {
-  position: relative;
+  margin-bottom: 1em; //mobile
+    position: relative;
   .cover {
     position: absolute;
     top: 0;
@@ -33,7 +34,6 @@ export default {
     bottom: 0;
     left: 0; // max-width: 100%;
     width: 100%;
-    padding: 3.5% 7.22% 0 7%;
     height: auto;
     display: block;
   }
@@ -41,14 +41,25 @@ export default {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: auto; //  width:368px;
-    //height:262px;
+    height: auto; 
+    opacity: 0.6;
+  }
+
+}
+.ipad {
+  .cover {
+    padding: 3.5% 7.22% 0 7%;
+  }
+}
+.desktop{
+  .cover{
+    padding: 4.5% 4.55% 0 4.55%;
   }
 }
 .image{
+  width: 440px; //mobile
   .cover {
-    width: 100%;
-    height: auto;
+    position: static;
   }
 }
 </style>

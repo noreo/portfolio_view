@@ -14,12 +14,20 @@
       <HomeProject v-for="project in projects" 
       :key="project.id" 
       :projectname="project.ref" 
+      :url="project.url"
       :client="project.client" 
       :title="project.title" 
       :details="project.details" 
       :pathcover="urlProj+project.ref+'/'+project.images.cover.file" 
       :typecover="project.images.cover.type" 
       />
+      <div class="conclusion container section">
+        <div class="container__txt--conclusion">
+        <h2>Thanks for browsing by.</h2>
+        <p>If you want to talk about interactive design, chocolat cookies, electro music or yoga, feel free to contact me.</p>
+        <div class="links"><a href="mailto:">abercon@gmail.com</a><a href="http://">Linkedin</a><a href="http://">Behance</a></div>
+    </div>
+    </div>
   </div>
 </div>
 </template>
@@ -64,7 +72,6 @@ export default {
       this.$emit("update", isTop);
     },
     initFullpage() {
-      console.log(screen.width);
       var comp = this;
       // if (screen && screen.width > 400) {
       //if not mobile
@@ -156,6 +163,32 @@ body {
     letter-spacing: normal;
   }
 }
+
+.conclusion {
+  text-align: center;
+  height: 100vh;
+  text-align: center;
+  display: block;
+  .links{
+    display: flex;
+    a{
+      margin: auto;
+    }
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; // Adjusts for spacing
+  }
+  .container__txt--conclusion {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 508px;
+  }
+}
 .vl {
   border-left: 1px solid $brightturquoise;
   height: $vl-height;
@@ -189,6 +222,7 @@ body {
     // transform: translateY($vl-height);
   }
 }
+
 $one-sec: 100 / $cercle-amin; //1 second in pourcentage
 
 @keyframes movecercle {
@@ -229,6 +263,7 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   }
 }
 
+//landscapde mobile
 @media (#{$bp-larger-than-phablet}) and (orientation: landscape) {
   .intro {
     padding-bottom: $vl-height-sm;

@@ -1,3 +1,3 @@
 /* eslint-disable */
-require('./image')
+require('./desktop')
 require('./ipad')

@@ -99,6 +99,7 @@ export default {
 
     &:hover {
       border-color: $brightturquoise;
+      background-color: $deepspace;
     }
     &.noborder {
       border-color: transparent;
