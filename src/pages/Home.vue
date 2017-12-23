@@ -169,10 +169,15 @@ body {
   height: 100vh;
   text-align: center;
   display: block;
+  padding-top: 5em;
   .links{
-    display: flex;
+   // display: flex;
     a{
-      margin: auto;
+     // margin: auto;
+      display: block;
+      padding:0.5em;
+      margin:0.5em;
+      width: 100%;
     }
   }
   &:before {

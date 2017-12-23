@@ -1,7 +1,6 @@
 <template>
 
-    <div class="home-project container section">
-
+    <div class="section home-project container">
         <h3 v-bind:class="textClass">{{ client }}</h3>
         <imagetype  :title="title"  :pathcover="pathcover" :type="typecover"/>
         <h2>{{ title }}</h2>
@@ -9,7 +8,6 @@
         <div class="goto-container">
             <router-link class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
         </div>
-
     </div>
 </template>
 
@@ -18,9 +16,17 @@ import ImageType from "./ImageType";
 
 export default {
   name: "project",
-  props: ["url","projectname", "client", "title", "details", "pathcover", "typecover"],
+  props: [
+    "url",
+    "projectname",
+    "client",
+    "title",
+    "details",
+    "pathcover",
+    "typecover"
+  ],
   components: {
-    'imagetype': ImageType
+    imagetype: ImageType
   },
   data() {
     return {
@@ -40,7 +46,7 @@ export default {
 @import "../global_scss/colors.scss";
 #app {
   .home-project {
-    //min-height: 100vh; //fullpage is doing it
+    min-height: 100vh; //fullpage is doing it?
     overflow: visible;
     padding-top: 5em;
     h3 {
@@ -69,12 +75,22 @@ export default {
     }
   }
 }
-
+//is small mobile
 $bp-small-mobile: "max-width: 321px" !default;
 
 @media (#{$bp-small-mobile }) {
-  .project__details {
-    display: none;
+  #app {
+    .home-project {
+      .project__details {
+        display: none;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      .container__img {
+        width: 100% !important;
+      }
+    }
   }
 }
 </style>
