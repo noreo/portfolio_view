@@ -33,7 +33,6 @@
 </template>
 
 <script>
-//import StickyHeader from "../components/StickyHeader";
 import HomeProject from "../components/HomeProject";
 import Data from "../assets/data_en.json";
 var url_proj = "../static/assets/projects/";
@@ -56,7 +55,6 @@ export default {
   },
 
   components: {
-    // StickyHeader,
     HomeProject
   },
   data() {
@@ -170,13 +168,16 @@ body {
   text-align: center;
   display: block;
   padding-top: 5em;
+  p{
+    margin-bottom: 1em;
+  }
   .links{
    // display: flex;
     a{
      // margin: auto;
       display: block;
       padding:0.5em;
-      margin:0.5em;
+      //margin:0.5em;
       width: 100%;
     }
   }
@@ -275,6 +276,17 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   }
   .vl {
     height: $vl-height-sm;
+  }
+}
+
+
+// Larger than tablet
+@media (#{$bp-larger-than-tablet}) {
+   .intro {
+    padding-bottom: $vl-height + $vl-height-sm;
+  }
+  .vl {
+    height: $vl-height + $vl-height-sm;
   }
 }
 </style>
