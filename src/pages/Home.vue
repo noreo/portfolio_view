@@ -280,7 +280,7 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
 }
 
 
-// Larger than tablet
+// Larger than tablet (desktop)
 @media (#{$bp-larger-than-tablet}) {
    .intro {
     padding-bottom: $vl-height + $vl-height-sm;
@@ -288,5 +288,6 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   .vl {
     height: $vl-height + $vl-height-sm;
   }
+
 }
 </style>

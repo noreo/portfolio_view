@@ -79,9 +79,9 @@ body {
     line-height: 42px;
     border-color: $white;
     color: $white;
+      background-color: $deepspace;
     &:hover {
       border-color: $brightturquoise;
-      background-color: $deepspace;
       box-shadow: 0 0 0 0.02em $brightturquoise;
     }
   }

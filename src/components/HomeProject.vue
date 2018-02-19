@@ -2,7 +2,7 @@
 
     <div class="section home-project container">
         <h3 v-bind:class="textClass">{{ client }}</h3>
-        <imagetype  :title="title"  :pathcover="pathcover" :type="typecover"/>
+        <imagetype  :title="title"  :pathcover="pathcover" :type="typecover" extraclass="home"/>
         <h2>{{ title }}</h2>
         <p  class="project__details">{{ details }}</p>
         <div class="goto-container">
@@ -44,6 +44,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 @import "../global_scss/colors.scss";
+@import "../global_scss/base/_variables.scss";
 #app {
   .home-project {
     min-height: 100vh; //fullpage is doing it?
@@ -92,5 +93,27 @@ $bp-small-mobile: "max-width: 321px" !default;
       }
     }
   }
+}
+// Larger than tablet (desktop)
+@media (#{$bp-larger-than-tablet}) {
+  #app {
+    .home-project {
+      h3, h2, p{
+        max-width: 50%;
+        z-index: 2;
+      }
+      .goto-container{
+        .button {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 4rem;
+        }
+
+      }
+    }
+  }
+
 }
 </style>
