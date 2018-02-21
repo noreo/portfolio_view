@@ -109,6 +109,7 @@ export default {
 
 $vl-height: 8em;
 $vl-height-sm: 3em;
+$vl-height-lg:11em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
 
@@ -244,15 +245,15 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   57% {
     //1sec
     opacity: 1;
-    transform: translateY($vl-height);
+    transform: translateY($vl-height-lg);
   }
   58% {
     opacity: 0;
-    transform: translateY($vl-height);
+    transform: translateY($vl-height-lg);
   }
   87% {
     opacity: 0;
-    transform: translateY($vl-height);
+    transform: translateY($vl-height-lg);
   }
   100% {
     opacity: 1;
@@ -283,10 +284,10 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
 // Larger than tablet (desktop)
 @media (#{$bp-larger-than-tablet}) {
    .intro {
-    padding-bottom: $vl-height + $vl-height-sm;
+    padding-bottom: $vl-height-lg;
   }
   .vl {
-    height: $vl-height + $vl-height-sm;
+    height: $vl-height-lg;
   }
 
 }

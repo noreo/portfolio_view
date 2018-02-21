@@ -1,12 +1,15 @@
 <template>
 
-    <div class="section home-project container">
+    <div v-bind:class="{ active: isActive }" class="section home-project container">
         <h3 v-bind:class="textClass">{{ client }}</h3>
-        <imagetype  :title="title"  :pathcover="pathcover" :type="typecover" extraclass="home"/>
-        <h2>{{ title }}</h2>
+        <imagetype  :title="title"  :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }"/>
+        <h2 >{{ title }}</h2>
         <p  class="project__details">{{ details }}</p>
         <div class="goto-container">
-            <router-link class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
+            <router-link 
+            @mouseenter.native="mouseOver" 
+            @mouseleave.native="mouseOver" 
+            class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
         </div>
     </div>
 </template>
@@ -32,11 +35,18 @@ export default {
     return {
       cta_msg: "View project",
       lineClass: "after-" + this.projectname + " hover-" + this.projectname,
-      textClass: "color-" + this.projectname
+      textClass: "color-" + this.projectname, 
+      isActive:false
     };
   },
   mounted: function() {
     //console.log(this.pathcover);
+  },
+  methods: {
+    mouseOver: function() {
+      this.isActive = !this.isActive;
+      //console.log("coucou");
+    }
   }
 };
 </script>
@@ -74,6 +84,12 @@ export default {
         }
       }
     }
+    &.active{
+      h3, h2, p{
+      transition-duration: 500ms;
+        opacity: 0;
+      }
+    }
   }
 }
 //is small mobile
@@ -98,22 +114,22 @@ $bp-small-mobile: "max-width: 321px" !default;
 @media (#{$bp-larger-than-tablet}) {
   #app {
     .home-project {
-      h3, h2, p{
+      h3,
+      h2,
+      p {
         max-width: 50%;
         z-index: 2;
       }
-      .goto-container{
+      .goto-container {
         .button {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 4rem;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-bottom: 4rem;
         }
-
       }
     }
   }
-
 }
 </style>

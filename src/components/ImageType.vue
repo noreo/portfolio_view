@@ -82,7 +82,11 @@ export default {
       top: 50%;
       transform: translate(-50%, -50%);
       opacity: 0.4;
+      transition-duration: 500ms;
       z-index: -1;
+      &.active{
+        opacity: 1;
+      }
     }
   }
 }
