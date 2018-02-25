@@ -1,15 +1,20 @@
 <template>
 
-    <div v-bind:class="{ active: isActive }" class="section home-project container">
+    <div class="section home-project container">
+      <div v-bind:class="{ active: isActive }">
         <h3 v-bind:class="textClass">{{ client }}</h3>
         <imagetype  :title="title"  :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }"/>
         <h2 >{{ title }}</h2>
         <p  class="project__details">{{ details }}</p>
+      </div>
         <div class="goto-container">
+          <div class="inner-goto-container">
             <router-link 
             @mouseenter.native="mouseOver" 
             @mouseleave.native="mouseOver" 
             class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
+            <span class="cercle" v-bind:class="[cercleClass, { animate: isActive }]"></span>
+          </div>
         </div>
     </div>
 </template>
@@ -35,8 +40,9 @@ export default {
     return {
       cta_msg: "View project",
       lineClass: "after-" + this.projectname + " hover-" + this.projectname,
-      textClass: "color-" + this.projectname, 
-      isActive:false
+      textClass: "color-" + this.projectname,
+      cercleClass: "bg-" + this.projectname,
+      isActive: false
     };
   },
   mounted: function() {
@@ -45,7 +51,6 @@ export default {
   methods: {
     mouseOver: function() {
       this.isActive = !this.isActive;
-      //console.log("coucou");
     }
   }
 };
@@ -82,11 +87,16 @@ export default {
           left: 100%;
           margin-left: 1em;
         }
+        & + .cercle {
+          display: none;
+        }
       }
     }
-    &.active{
-      h3, h2, p{
-      transition-duration: 500ms;
+    .active {
+      h3,
+      h2,
+      p {
+        transition-duration: 500ms;
         opacity: 0;
       }
     }
@@ -110,6 +120,8 @@ $bp-small-mobile: "max-width: 321px" !default;
     }
   }
 }
+$cercle-amin: 2s;
+
 // Larger than tablet (desktop)
 @media (#{$bp-larger-than-tablet}) {
   #app {
@@ -121,15 +133,50 @@ $bp-small-mobile: "max-width: 321px" !default;
         z-index: 2;
       }
       .goto-container {
-        .button {
+        .inner-goto-container {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
           margin-bottom: 4rem;
+          .button {
+            float: left;
+          }
+          .cercle {
+            display: block;
+            opacity: 0;
+            float: left;
+            margin-top: 0.8rem;
+            &.animate {
+              transition: transform;
+              transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+              animation: movecercle_h $cercle-amin infinite; /* IE 10+, Fx 29+ */
+              // transform: translateX($vl-height);
+            }
+          }
         }
       }
     }
+  }
+}
+@keyframes movecercle_h {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  15% {
+    //300ms
+    opacity: 1;
+    transform: translateX(0);
+  }
+  65% {
+    //1sec
+    opacity: 1;
+    transform: translateX(50vw);
+  }
+  66% {
+    opacity: 0;
+    transform: translateX(50vw);
   }
 }
 </style>

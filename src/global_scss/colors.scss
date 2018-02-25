@@ -25,6 +25,9 @@ $colors-primary: $adidas-lipstick $bve-torchred $brew-muesli $ledevoir-purple;
     .color-#{$p} { 
         color: $current-color;
     }
+    .bg-#{$p} { 
+        background-color: $current-color;
+    }
     .border-#{$p}, .hover-#{$p}:hover { 
         border-color: $current-color !important;
         box-shadow: 0 0 0 0.02em $current-color !important;
