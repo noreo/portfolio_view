@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link class="logo-min" to="/">
+      <router-link class="logo-min" to="/" @click.native="gototop">
         <svgicon name="logo-min" width="30" height="30" color=""></svgicon>
       </router-link>
       <ul class="navbt">
@@ -16,9 +16,12 @@
           </router-link>
         </li>
         <li>
-          <a href="#" class=" button-square">
+          <router-link class="button-square" to="/contact">
             <svgicon name="contact" width="24" height="24" color=""></svgicon>
-          </a>
+          </router-link>
+        <!--   <a class="button-square" v-on:click.stop.prevent="gotocontact" href="#">
+            <svgicon name="contact" width="24" height="24" color=""></svgicon>
+          </a>-->
         </li>
       </ul>
 
@@ -27,17 +30,26 @@
 </template>
 
 <script>
-
+  import { Bus } from '../bus.js';
 export default {
-  name: 'header'
-}
-
+  name: "header",
+  mounted: function() {
+    // From testing, without a brief timeout, it won't work.
+    //  setTimeout(() => this.scrollFix(this.$route.hash), 1)
+  },
+  methods: {
+    gototop(){
+       // Send the event on the bus
+      Bus.$emit('movetotop');
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import '../global_scss/colors.scss';
-@import '../global_scss/base/_variables.scss';
+@import "../global_scss/colors.scss";
+@import "../global_scss/base/_variables.scss";
 
 .navbar {
   position: fixed;
@@ -46,7 +58,6 @@ export default {
   left: 0;
   z-index: 1030;
   padding-top: 1em;
-
 
   .logo-min {
     float: left;
@@ -124,11 +135,11 @@ export default {
 
 .navbar.onscroll {
   .logo-min {
-         transition-delay: 700ms;
+    transition-delay: 700ms;
     opacity: 1;
     visibility: visible;
   }
-  .visible-top{
+  .visible-top {
     opacity: 0;
     visibility: visible;
   }

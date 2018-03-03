@@ -14,10 +14,13 @@ export default new Router({
     },
     {
       path: '/fr',
-      name: 'Home',
+      name: 'HomeFR',
       component: Home,
       props: { lang: 'fr' }
     },
-    { path: '/bye', component: Bye }
+    { path: '/contact',
+    name: 'Contact',
+    component: Home, 
+    props: { contact: true } }
   ]
 })

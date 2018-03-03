@@ -1,6 +1,6 @@
 <template>
 
-    <div class="section home-project container">
+    <div class="section home-project container" v-bind:data-anchor="'proj_'+ this.projectname">
       <div v-bind:class="{ active: isActive }">
         <h3 v-bind:class="textClass">{{ client }}</h3>
         <imagetype  :title="title"  :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }"/>

@@ -5,7 +5,7 @@
         </div>
   <div class="home" id="fullpage">
   <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
-    <header class="cover section">
+    <header class="cover section" data-anchor="welcome">
       <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
       <div class="intro">
         <h1 v-html="intro"></h1>
@@ -21,7 +21,7 @@
       :pathcover="urlProj+project.ref+'/'+project.images.cover.file" 
       :typecover="project.images.cover.type" 
       />
-      <div class="conclusion container section">
+      <div id="site_contact" class="conclusion container section" data-anchor="site_contact">
         <div class="container__txt--conclusion">
         <h2>Thanks for browsing by.</h2>
         <p>If you want to talk about interactive design, chocolat cookies, electro music or yoga, feel free to contact me.</p>
@@ -44,6 +44,8 @@ var inteval;
 
 import fullpage from "../global_js/javascript.fullPage.min";
 
+import { Bus } from "../bus.js";
+
 export default {
   name: "home",
   // mixins: [onScroll],
@@ -51,9 +53,19 @@ export default {
     lang: {
       type: String,
       default: "en"
+    },
+    contact: {
+      type: Boolean,
+      default: false
     }
   },
-
+  watch: {
+    $route(to, from) {
+      if (to.path == "/contact") {
+        this.movetocontact();
+      }
+    }
+  },
   components: {
     HomeProject
   },
@@ -74,7 +86,9 @@ export default {
       // if (screen && screen.width > 400) {
       //if not mobile
       fullpage.initialize("#fullpage", {
-        afterLoad: function(anchorLink, index) {},
+        afterLoad: function(anchorLink, index) {
+          if (comp.$router.path !== "/") comp.$router.push({ path: "/" }); //if is contact then..
+        },
         onLeave: function(index, nextIndex, direction) {
           let s = nextIndex != 1;
           comp.handleScroll(s);
@@ -89,14 +103,28 @@ export default {
           comp.isScrolled = s;
         });
       }*/
+    },
+    movetocontact() {
+      let contact_section = document.querySelectorAll("#fullpage .section")
+        .length;
+      fullpage.moveTo(contact_section);
     }
   },
   mounted: function() {
+
+    var comp = this;
     this.initFullpage();
     //  window.addEventListener("resize", this.initFullpage);
-  },
-  beforeDestroy() {
-    // window.removeEventListener("scroll");
+    Bus.$on("movetocontact", function() {
+      comp.movetocontact();
+    });
+    Bus.$on("movetotop", function() {
+      fullpage.moveTo(1); //move to top
+    });
+
+    if (this.contact) {
+      this.movetocontact();
+    }
   }
 };
 </script>
@@ -109,7 +137,7 @@ export default {
 
 $vl-height: 8em;
 $vl-height-sm: 3em;
-$vl-height-lg:11em;
+$vl-height-lg: 11em;
 $cercle-size: 1em;
 $cercle-amin: 7s;
 
@@ -169,15 +197,15 @@ body {
   text-align: center;
   display: block;
   padding-top: 5em;
-  p{
+  p {
     margin-bottom: 1em;
   }
-  .links{
-   // display: flex;
-    a{
-     // margin: auto;
+  .links {
+    // display: flex;
+    a {
+      // margin: auto;
       display: block;
-      padding:0.5em;
+      padding: 0.5em;
       //margin:0.5em;
       width: 100%;
     }
@@ -280,15 +308,13 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   }
 }
 
-
 // Larger than tablet (desktop)
 @media (#{$bp-larger-than-tablet}) {
-   .intro {
+  .intro {
     padding-bottom: $vl-height-lg;
   }
   .vl {
     height: $vl-height-lg;
   }
-
 }
 </style>
