@@ -135,6 +135,11 @@ export default {
 @import "../global_scss/base/_variables.scss";
 @import "../global_js/javascript.fullPage.css";
 
+//for fullpage
+#fullpage, .section, .fp-table, body, html{
+   height: 100%;
+}
+
 $vl-height: 8em;
 $vl-height-sm: 3em;
 $vl-height-lg: 11em;

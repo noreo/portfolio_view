@@ -130,6 +130,9 @@ export default {
     path {
       fill: $white;
     }
+    .logo-min:hover path{
+      fill:$brightturquoise;
+    }
   }
 }
 
