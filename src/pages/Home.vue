@@ -111,7 +111,6 @@ export default {
     }
   },
   mounted: function() {
-
     var comp = this;
     this.initFullpage();
     //  window.addEventListener("resize", this.initFullpage);
@@ -136,8 +135,12 @@ export default {
 @import "../global_js/javascript.fullPage.css";
 
 //for fullpage
-#fullpage, .section, .fp-table, body, html{
-   height: 100%;
+#fullpage,
+.section,
+.fp-table,
+body,
+html {
+  height: 100%;
 }
 
 $vl-height: 8em;
@@ -207,6 +210,7 @@ body {
   }
   .links {
     // display: flex;
+    position: relative; //parallax
     a {
       // margin: auto;
       display: block;
@@ -227,6 +231,7 @@ body {
     vertical-align: middle;
     width: 100%;
     max-width: 508px;
+    position: relative; //for parallax
   }
 }
 .vl {
@@ -291,6 +296,28 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+      //paralax
+
+.section {
+  h2,
+  p,
+  .goto-container .inner-goto-container,
+    .container__txt--conclusion .links{
+    bottom: -2rem !important; //move down element from 20px in height 768px
+  }
+  &.active {
+    h2,
+    p,
+    .goto-container .inner-goto-container,
+    .container__txt--conclusion .links{
+      transition-delay: 400ms;
+      transition-duration: 600ms;
+      transition-property: bottom;
+      transition-timing-function: ease;
+      bottom: 0 !important; //move back element
+    }
   }
 }
 

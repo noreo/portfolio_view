@@ -157,23 +157,6 @@ $cercle-amin: 2s;
           }
         }
       }
-      //paralax
-      h2,
-      p,
-      .goto-container .inner-goto-container {
-        bottom: -2rem; //move down element from 20px in height 768px
-      }
-      &.active {
-        h2,
-        p,
-        .goto-container .inner-goto-container {
-          transition-delay: 500ms;
-          transition-duration: 500ms;
-          transition-property: bottom;
-          transition-timing-function: ease;
-          bottom: 0% !important; //move back element
-        }
-      }
     }
   }
 }
