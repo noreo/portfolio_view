@@ -131,6 +131,7 @@ $cercle-amin: 2s;
       p {
         max-width: 50%;
         z-index: 2;
+        position: relative;
       }
       .goto-container {
         .inner-goto-container {
@@ -154,6 +155,23 @@ $cercle-amin: 2s;
               // transform: translateX($vl-height);
             }
           }
+        }
+      }
+      //paralax
+      h2,
+      p,
+      .goto-container .inner-goto-container {
+        bottom: -2rem; //move down element from 20px in height 768px
+      }
+      &.active {
+        h2,
+        p,
+        .goto-container .inner-goto-container {
+          transition-delay: 500ms;
+          transition-duration: 500ms;
+          transition-property: bottom;
+          transition-timing-function: ease;
+          bottom: 0% !important; //move back element
         }
       }
     }
