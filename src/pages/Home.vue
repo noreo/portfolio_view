@@ -1,7 +1,7 @@
 <template>
 <div>
-        <div class="vl" v-bind:class="{ hide: isScrolled }">
-          <span class="cercle" v-bind:class="{ animate: !isScrolled }"></span>
+        <div class="vl" v-bind:class="{ show: !isScrolled /*|| isLastSection, top: isLastSection*/}">
+          <span class="cercle"></span>
         </div>
   <div class="home" id="fullpage">
   <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
@@ -23,6 +23,7 @@
       />
       <div id="site_contact" class="conclusion container section" data-anchor="site_contact">
         <div class="container__txt--conclusion">
+          <span class="cercle"></span>
         <h2>Thanks for browsing by.</h2>
         <p>If you want to talk about interactive design, chocolat cookies, electro music or yoga, feel free to contact me.</p>
         <div class="links"><a href="mailto:">abercon@gmail.com</a><a href="http://">Linkedin</a><a href="http://">Behance</a></div>
@@ -74,7 +75,9 @@ export default {
       intro: Data.intro,
       projects: Data.projects,
       urlProj: config.url_proj,
-      isScrolled: false
+      isScrolled: false,
+      isLastSection: false,
+      lastSection: 1
     };
   },
   methods: {
@@ -93,6 +96,10 @@ export default {
           let s = nextIndex != 1;
           comp.handleScroll(s);
           comp.isScrolled = s;
+          comp.isLastSection = false; //remove vertical line when leaving contact section
+        },
+        afterLoad: function(anchorLink, index) {
+          comp.isLastSection = comp.lastSection == index;
         }
       });
       /* } else {
@@ -105,13 +112,12 @@ export default {
       }*/
     },
     movetocontact() {
-      let contact_section = document.querySelectorAll("#fullpage .section")
-        .length;
-      fullpage.moveTo(contact_section);
+      fullpage.moveTo(this.lastSection);
     }
   },
   mounted: function() {
     var comp = this;
+    this.lastSection = document.querySelectorAll("#fullpage .section").length;
     this.initFullpage();
     //  window.addEventListener("resize", this.initFullpage);
     Bus.$on("movetocontact", function() {
@@ -205,6 +211,8 @@ body {
   text-align: center;
   display: block;
   padding-top: 5em;
+  //overflow: hidden;
+  padding-top: 0.5em; //adjust vertical align
   p {
     margin-bottom: 1em;
   }
@@ -220,6 +228,7 @@ body {
     }
   }
   &:before {
+    //vertical align
     content: "";
     display: inline-block;
     height: 100%;
@@ -231,18 +240,60 @@ body {
     vertical-align: middle;
     width: 100%;
     max-width: 508px;
-    position: relative; //for parallax
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      height: 9999px;
+      width: 1px;
+      background: $brightturquoise;
+      left: 50%;
+      margin-bottom: 1em;
+      opacity: 0;
+      transition-duration: 300ms;
+      margin-left: -1px;
+    }
+    .cercle{
+      position: absolute;
+      top:-2rem;
+      left: 50%;
+      margin-left: - $cercle-size / 2;
+     transform: translateY(-50vh);
+      opacity: 0;
+    }
+  }
+  &.active {
+    .container__txt--conclusion:before {
+      transition-delay: 700ms;
+      transition-property: opacity;
+      opacity: 1;
+    }
+   .container__txt--conclusion .cercle{
+      //animate
+     // transition-delay: 700ms;
+      //transition-property: opacity;
+     // opacity: 1;
+    
+     transition: transform;
+      transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    // transform: translateY(0);
+      animation: movecercle_end 2s forwards; /* IE 10+, Fx 29+ */
+    }
   }
 }
 .vl {
+  // transition-property: bottom;
+  bottom: 0;
   border-left: 1px solid $brightturquoise;
   height: $vl-height;
   position: fixed;
   left: 50%;
   margin-left: -1px;
-  bottom: 0;
   white-space: nowrap;
   z-index: 1;
+  opacity: 0;
 
   .cercle {
     position: absolute;
@@ -250,8 +301,21 @@ body {
     top: 0;
     margin-left: - $cercle-size / 2;
   }
-  &.hide {
-    opacity: 0;
+  &.show {
+    transition-delay: 700ms !important;
+
+    opacity: 1;
+    .cercle {
+      //start animatation
+      transition: transform;
+      transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+      animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
+      // transform: translateY($vl-height);
+    }
+  }
+  &.top {
+    bottom: auto;
+    top: 0;
   }
 }
 .cercle {
@@ -260,12 +324,6 @@ body {
   width: $cercle-size;
   border-radius: $cercle-size;
   background-color: $brightturquoise;
-  &.animate {
-    transition: transform;
-    transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-    animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
-    // transform: translateY($vl-height);
-  }
 }
 
 $one-sec: 100 / $cercle-amin; //1 second in pourcentage
@@ -298,20 +356,36 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
     transform: translateY(0);
   }
 }
-      //paralax
+@keyframes movecercle_end {
+  0%{
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+  50%{
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+//paralax
 
 .section {
   h2,
   p,
   .goto-container .inner-goto-container,
-    .container__txt--conclusion .links{
+  .container__txt--conclusion .links {
     bottom: -2rem !important; //move down element from 20px in height 768px
   }
   &.active {
     h2,
     p,
     .goto-container .inner-goto-container,
-    .container__txt--conclusion .links{
+    .container__txt--conclusion .links {
       transition-delay: 400ms;
       transition-duration: 600ms;
       transition-property: bottom;
