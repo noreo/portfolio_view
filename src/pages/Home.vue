@@ -60,13 +60,6 @@ export default {
       default: false
     }
   },
-  watch: {
-    $route(to, from) {
-      if (to.path == "/contact") {
-        this.movetocontact();
-      }
-    }
-  },
   components: {
     HomeProject
   },
@@ -90,7 +83,7 @@ export default {
       //if not mobile
       fullpage.initialize("#fullpage", {
         afterLoad: function(anchorLink, index) {
-          if (comp.$router.path !== "/") comp.$router.push({ path: "/" }); //if is contact then..
+          //  if (comp.$router.path !== "/") comp.$router.push({ path: "/" }); //if is contact then..
         },
         onLeave: function(index, nextIndex, direction) {
           let s = nextIndex != 1;
@@ -117,12 +110,20 @@ export default {
   },
   mounted: function() {
     var comp = this;
+
     this.lastSection = document.querySelectorAll("#fullpage .section").length;
     this.initFullpage();
     //  window.addEventListener("resize", this.initFullpage);
+
+    //gotocontact from another page
+    if (comp.$route.query.q == "contact") {
+      this.movetocontact();
+    }
+    //gotocontact from home
     Bus.$on("movetocontact", function() {
       comp.movetocontact();
     });
+    //gotohome from home
     Bus.$on("movetotop", function() {
       fullpage.moveTo(1); //move to top
     });
@@ -255,12 +256,12 @@ body {
       transition-duration: 300ms;
       margin-left: -1px;
     }
-    .cercle{
+    .cercle {
       position: absolute;
-      top:-2rem;
+      top: -2rem;
       left: 50%;
       margin-left: - $cercle-size / 2;
-     transform: translateY(-50vh);
+      transform: translateY(-50vh);
       opacity: 0;
     }
   }
@@ -270,15 +271,15 @@ body {
       transition-property: opacity;
       opacity: 1;
     }
-   .container__txt--conclusion .cercle{
+    .container__txt--conclusion .cercle {
       //animate
-     // transition-delay: 700ms;
+      // transition-delay: 700ms;
       //transition-property: opacity;
-     // opacity: 1;
-    
-     transition: transform;
+      // opacity: 1;
+
+      transition: transform;
       transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-    // transform: translateY(0);
+      // transform: translateY(0);
       animation: movecercle_end 2s forwards; /* IE 10+, Fx 29+ */
     }
   }
@@ -357,20 +358,19 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   }
 }
 @keyframes movecercle_end {
-  0%{
+  0% {
     opacity: 0;
     transform: translateY(-10rem);
   }
-  50%{
+  50% {
     opacity: 0;
     transform: translateY(-10rem);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 
 //paralax
 

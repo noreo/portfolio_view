@@ -16,7 +16,7 @@
           </router-link>
         </li>
         <li>
-          <router-link class="button-square" to="/contact">
+          <router-link class="button-square" to="/?q=contact" @click.native="gotocontact">
             <svgicon name="contact" width="24" height="24" color=""></svgicon>
           </router-link>
         <!--   <a class="button-square" v-on:click.stop.prevent="gotocontact" href="#">
@@ -41,6 +41,10 @@ export default {
     gototop(){
        // Send the event on the bus
       Bus.$emit('movetotop');
+    },
+    gotocontact(){
+       // Send the event on the bus
+      Bus.$emit('movetocontact');
     }
   }
 };
