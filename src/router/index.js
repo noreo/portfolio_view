@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/Home'
-import Bye from '@/components/Bye'
+import Project from '@/pages/Project'
 
 Vue.use(Router)
 
@@ -21,6 +21,7 @@ export default new Router({
     { path: '/contact',
     name: 'Contact',
     component: Home, 
-    props: { contact: true } }
+    props: { contact: true } },
+    { path: '/project/:name', component: Project }
   ]
 })
