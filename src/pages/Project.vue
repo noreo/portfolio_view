@@ -34,7 +34,8 @@ export default {
       intro: Data.intro,
       projects: Data.projects,
       urlProj: config.url_proj,
-      objProject: {}
+      objProject: {},
+      index:0
     };
   },
   methods: {
@@ -42,12 +43,16 @@ export default {
   },
   mounted: function() {
   var url = this.$route.params.name;
+  var i = 0;
   this.projects.forEach(project => {
     if(project.url == url){
       this.objProject = project;
+      this.index = i;
     }
+    i++
   });
   console.log(this.objProject.ref);
+  console.log(this.index);
   }
 };
 </script>

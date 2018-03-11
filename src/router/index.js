@@ -22,6 +22,15 @@ export default new Router({
     name: 'Contact',
     component: Home, 
     props: { contact: true } },
-    { path: '/project/:name', component: Project }
+
+    { path: '/:name',
+    name: 'Project',
+    component: Project
+  }
+
+    /*{ path: '/brewsters-branding-website',
+    name: 'Brewsters',
+    component: Project, 
+    props: { ref: 'brew' } },*/
   ]
 })

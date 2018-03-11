@@ -11,14 +11,14 @@
         <h1 v-html="intro"></h1>
       </div>
     </header>
-      <HomeProject v-for="project in projects" 
-      :key="project.id" 
+      <HomeProject v-for="(project, index) in projects" 
+      :key="index" 
       :projectname="project.ref" 
-      :url="'project/'+project.url"
+      :url="project.url"
       :client="project.client" 
       :title="project.title" 
       :details="project.details" 
-      :pathcover="urlProj+project.ref+'/'+project.images.cover.file" 
+      :pathcover="urlProj+project.ref+'/'+project.images.cover.file"
       :typecover="project.images.cover.type" 
       />
       <div id="site_contact" class="conclusion container section" data-anchor="site_contact">
@@ -116,7 +116,7 @@ export default {
     //  window.addEventListener("resize", this.initFullpage);
 
     //gotocontact from another page
-    if (comp.$route.query.q == "contact") {
+    if (comp.$route.query.p == "contact") {
       this.movetocontact();
     }
     //gotocontact from home
