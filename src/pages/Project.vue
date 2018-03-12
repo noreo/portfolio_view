@@ -1,15 +1,15 @@
 <template>
-<div>
-<h1>hello</h1>
+<div class="project__background">
+ <header>
+        <h1>{{ objProject.title }}</h1>
+    </header>
 </div>
 </template>
 
 <script>
 import HomeProject from "../components/HomeProject";
 import Data from "../assets/data_en.json";
-var url_proj = "../static/assets/projects/";
 import config from "../config";
-
 
 import { Bus } from "../bus.js";
 
@@ -35,24 +35,22 @@ export default {
       projects: Data.projects,
       urlProj: config.url_proj,
       objProject: {},
-      index:0
+      index: 0
     };
   },
-  methods: {
-  
-  },
+  methods: {},
   mounted: function() {
-  var url = this.$route.params.name;
-  var i = 0;
-  this.projects.forEach(project => {
-    if(project.url == url){
-      this.objProject = project;
-      this.index = i;
-    }
-    i++
-  });
-  console.log(this.objProject.ref);
-  console.log(this.index);
+    var url = this.$route.params.name;
+    var i = 0;
+    this.projects.forEach(project => {
+      if (project.url == url) {
+        this.objProject = project;
+        this.index = i;
+      }
+      i++;
+    });
+    console.log(this.objProject.ref);
+    console.log(this.index);
   }
 };
 </script>
@@ -61,9 +59,16 @@ export default {
 <style lang="scss" >
 @import "../global_scss/colors.scss";
 @import "../global_scss/base/_variables.scss";
-@import "../global_js/javascript.fullPage.css";
-body{
- background-color: $white;
+
+.project__background {
+  background-color: $white;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 //landscapde mobile

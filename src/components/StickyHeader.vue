@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar" v-bind:class="{ white: isHeaderWhite }">
     <div class="container">
       <router-link class="logo-min" to="/" @click.native="gototop">
         <svgicon name="logo-min" width="30" height="30" color=""></svgicon>
@@ -30,21 +30,31 @@
 </template>
 
 <script>
-  import { Bus } from '../bus.js';
+import { Bus } from "../bus.js";
 export default {
   name: "header",
+  data() {
+    return {
+      isHeaderWhite: true
+    };
+  },
   mounted: function() {
-    // From testing, without a brief timeout, it won't work.
-    //  setTimeout(() => this.scrollFix(this.$route.hash), 1)
+    this.isHeaderWhite = (this.$route.name == "Home");
   },
   methods: {
-    gototop(){
-       // Send the event on the bus
-      Bus.$emit('movetotop');
+    gototop() {
+      // Send the event on the bus
+      Bus.$emit("movetotop");
     },
-    gotocontact(){
-       // Send the event on the bus
-      Bus.$emit('movetocontact');
+    gotocontact() {
+      // Send the event on the bus
+      Bus.$emit("movetocontact");
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.isHeaderWhite = (to.name == "Home");
+
     }
   }
 };
@@ -134,8 +144,8 @@ export default {
     path {
       fill: $white;
     }
-    .logo-min:hover path{
-      fill:$brightturquoise;
+    .logo-min:hover path {
+      fill: $brightturquoise;
     }
   }
 }

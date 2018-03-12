@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-
-        <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />
+    <StickyHeader v-bind:class="{ onscroll: isScrolled }" />
     <transition name="fade" mode="out-in">
       <router-view @update="updateOnScroll"></router-view>
     </transition>
@@ -23,6 +22,10 @@ export default {
   },
   components: {
     StickyHeader
+  },
+  mounted: function() {
+    var url = this.$route.params.name;
+    console.log(url);
   }
 };
 </script>
@@ -79,7 +82,7 @@ body {
     line-height: 42px;
     border-color: $white;
     color: $white;
-      background-color: $deepspace;
+    background-color: $deepspace;
     &:hover {
       border-color: $brightturquoise;
       box-shadow: 0 0 0 0.02em $brightturquoise;

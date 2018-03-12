@@ -14,7 +14,7 @@
       <HomeProject v-for="(project, index) in projects" 
       :key="index" 
       :projectname="project.ref" 
-      :url="project.url"
+      :url="project.url+'/'"
       :client="project.client" 
       :title="project.title" 
       :details="project.details" 
