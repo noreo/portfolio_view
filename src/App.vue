@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <StickyHeader v-bind:class="{ onscroll: isScrolled }" />
-    <transition name="fade" mode="out-in">
+    <transition name="slide" mode="in-out">
       <router-view @update="updateOnScroll"></router-view>
     </transition>
   </div>
@@ -89,6 +89,51 @@ body {
     }
   }
 }
+
+
+
+.slide-enter-active {
+  animation: slideInRight 0.8s;
+  animation-timing-function:cubic-bezier(0.33, 0, 0.33, 1.0);
+ // -webkit-animation-name: slideInRight;
+  //animation-name: slideInRight;
+}
+.slide-leave-active {
+  animation: slideInRight 0.8s reverse;
+}
+
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+
 
 .fade-enter-active,
 .fade-leave-active {
