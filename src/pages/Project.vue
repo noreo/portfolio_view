@@ -1,7 +1,8 @@
 <template>
 <div class="project__background">
  <header>
-        <h1>{{ objProject.title }}</h1>
+   <h3 :class="textClass">{{objProject.client}}</h3>
+        <h1 class="h2">{{ objProject.title }}</h1>
     </header>
 </div>
 </template>
@@ -35,7 +36,10 @@ export default {
       projects: Data.projects,
       urlProj: config.url_proj,
       objProject: {},
-      index: 0
+      index: 0,
+      projectref:'',
+      textClass: "color-",
+      
     };
   },
   methods: {},
@@ -49,7 +53,7 @@ export default {
       }
       i++;
     });
-    console.log(this.objProject.ref);
+    this.textClass += this.objProject.ref;
     console.log(this.index);
   }
 };
@@ -69,6 +73,14 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2; //hover home vertical line
+  header{
+    padding-top: 5em;  //same as .home-project
+    .h2{
+      max-width: 50%;
+    }
+    
+  }
 }
 
 //landscapde mobile

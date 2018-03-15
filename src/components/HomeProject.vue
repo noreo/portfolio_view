@@ -12,6 +12,7 @@
             <router-link 
             @mouseenter.native="mouseOver" 
             @mouseleave.native="mouseOver" 
+            @mousedown.native="mouseDown"
             class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
             <span class="cercle" v-bind:class="[cercleClass, { animate: isActive }]"></span>
           </div>
@@ -51,6 +52,9 @@ export default {
   methods: {
     mouseOver: function() {
       this.isActive = !this.isActive;
+    },
+    mouseDown: function(){
+      this.isActive = false;
     }
   }
 };
@@ -168,7 +172,8 @@ $cercle-amin: 2s;
   15% {
     //300ms
     opacity: 1;
-    transform: translateX(0);
+  //  transform: translateX(0);
+   // transform: translateX(50vw);
   }
   65% {
     //1sec
