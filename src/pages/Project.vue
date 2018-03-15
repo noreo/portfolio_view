@@ -1,9 +1,16 @@
 <template>
-<div class="project__background">
- <header>
+<div class="single__project">
+
+ <header class="home-project container">
    <h3 :class="textClass">{{objProject.client}}</h3>
         <h1 class="h2">{{ objProject.title }}</h1>
     </header>
+<div class="project__background">
+  <div class="container">
+
+  dsahdjshajdhsa
+  </div>
+</div>
 </div>
 </template>
 
@@ -37,9 +44,8 @@ export default {
       urlProj: config.url_proj,
       objProject: {},
       index: 0,
-      projectref:'',
-      textClass: "color-",
-      
+      projectref: "",
+      textClass: "color-"
     };
   },
   methods: {},
@@ -74,12 +80,13 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 2; //hover home vertical line
-  header{
-    padding-top: 5em;  //same as .home-project
+}
+.single__project{
+  .home-project{
+  z-index: 3; //hover project__background
     .h2{
-      max-width: 50%;
+      color:$black;
     }
-    
   }
 }
 

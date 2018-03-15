@@ -58,7 +58,7 @@ body {
   color: $black;
   margin: 0;
   overflow: hidden; //prevent "goto" line to out of the screen
-  h2, .h2 {
+  h2 {
     font-size: 2em; //2.5em on desktop
     line-height: 1.1;
     font-weight: 100;
@@ -94,7 +94,7 @@ body {
 
 .slide-enter-active {
   animation: slideInRight 0.8s;
-  animation-timing-function:cubic-bezier(0.33, 0, 0.33, 1.04);
+  animation-timing-function:cubic-bezier(0.33, 0, 0.33, 1.0);
  // -webkit-animation-name: slideInRight;
   //animation-name: slideInRight;
 }
