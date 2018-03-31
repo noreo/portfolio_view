@@ -1,17 +1,17 @@
 <template>
-<div class="single__project">
-
- <header class="home-project container">
-   <h3 :class="textClass">{{objProject.client}}</h3>
-        <h1 class="h2">{{ objProject.title }}</h1>
-    </header>
-<div class="project__background">
-  <div class="container">
-
-  dsahdjshajdhsa
-  </div>
-</div>
-</div>
+    <transition name="pslide" >
+      <div class="single__project">
+        <header class="home-project container">
+          <h3 :class="textClass">{{objProject.client}}</h3>
+                <h1 class="h2">{{ objProject.title }}</h1>
+            </header>
+          <div class="container">
+          dsahdjshajdhsa
+          </div>
+        <div class="project__background">
+        </div>
+      </div>
+    </transition>
 </template>
 
 <script>
@@ -81,11 +81,11 @@ export default {
   height: 100%;
   z-index: 2; //hover home vertical line
 }
-.single__project{
-  .home-project{
-  z-index: 3; //hover project__background
-    .h2{
-      color:$black;
+.single__project {
+  .home-project {
+    z-index: 3; //hover project__background
+    .h2 {
+      color: $black;
     }
   }
 }
@@ -97,4 +97,35 @@ export default {
 // Larger than tablet (desktop)
 @media (#{$bp-larger-than-tablet}) {
 }
+
+.pslide-enter-active {
+  //animation: pslide-in .5s;
+ // animation-direction: 0.5s;
+    animation: pslide-in 0.5s;
+  .project__background {
+  }
+}
+.pslide-leave-active {
+ // animation-direction: 0.5s;
+    animation: pslide-out 0.5s;
+  .project__background {
+  }
+}
+@keyframes pslide-in {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes pslide-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 </style>
