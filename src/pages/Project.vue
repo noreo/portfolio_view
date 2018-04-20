@@ -5,10 +5,10 @@
           <h3 :class="textClass">{{objProject.client}}</h3>
                 <h1 class="h2">{{ objProject.title }}</h1>
             </header>
+        <div class="project__background">
           <div class="container">
           dsahdjshajdhsa
           </div>
-        <div class="project__background">
         </div>
       </div>
     </transition>
@@ -61,6 +61,8 @@ export default {
     });
     this.textClass += this.objProject.ref;
     console.log(this.index);
+    TweenLite.to(".project__background", 1.5, {x:0, ease:Power2.easeInOut});
+    
   }
 };
 </script>
@@ -77,6 +79,8 @@ export default {
   margin: 0;
   top: 0;
   left: 0;
+    transform: translateX(100vw);
+  
   width: 100%;
   height: 100%;
   z-index: 2; //hover home vertical line
@@ -98,11 +102,11 @@ export default {
 @media (#{$bp-larger-than-tablet}) {
 }
 
-.pslide-enter-active {
-  //animation: pslide-in .5s;
- // animation-direction: 0.5s;
-    animation: pslide-in 0.5s;
+/* .pslide-enter-active {
+  animation-direction: 0.6s;
   .project__background {
+ animation-delay: 0.1s;
+    animation: pslide-in 0.5s;
   }
 }
 .pslide-leave-active {
@@ -110,7 +114,7 @@ export default {
     animation: pslide-out 0.5s;
   .project__background {
   }
-}
+} */
 @keyframes pslide-in {
   0% {
     transform: translateX(100vw);

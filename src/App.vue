@@ -145,33 +145,5 @@ body {
   opacity: 1;
 }
 
-.pslide-enter-active {
-  //animation: pslide-in .5s;
- // animation-direction: 0.5s;
-    animation: pslide-in 0.5s;
-  .project__background {
-  }
-}
-.pslide-leave-active {
- // animation-direction: 0.5s;
-    animation: pslide-out 0.5s;
-  .project__background {
-  }
-}
-@keyframes pslide-in {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes pslide-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+
 </style>

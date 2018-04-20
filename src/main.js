@@ -6,6 +6,9 @@ import App from './App'
 import router from './router'
 
 import * as svgicon from 'vue-svgicon'
+
+import {TweenMax, Power2, TimelineLite} from "gsap";
+
 Vue.use(svgicon, {
   tagName: 'svgicon'
 })
