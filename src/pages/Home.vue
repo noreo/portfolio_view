@@ -1,4 +1,6 @@
 <template>
+<transition>
+
 <div>
         <div class="vl" v-bind:class="{ show: !isScrolled /*|| isLastSection, top: isLastSection*/}">
           <span class="cercle"></span>
@@ -31,6 +33,7 @@
     </div>
   </div>
 </div>
+</transition>
 </template>
 
 <script>

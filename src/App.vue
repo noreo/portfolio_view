@@ -88,15 +88,8 @@ body {
   }
 }
 
-.slide-enter-active {
-  animation: slideInRight 0.8s;
-  animation-timing-function: cubic-bezier(0.33, 0, 0.33, 1);
-  // -webkit-animation-name: slideInRight;
-  //animation-name: slideInRight;
-}
-.slide-leave-active {
-  animation: slideInRight 0.8s reverse;
-}
+
+
 
 @-webkit-keyframes slideInRight {
   from {
@@ -129,21 +122,7 @@ body {
   animation-name: slideInRight;
 }
 
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
 
-.slide-fade-leave-active,
-.slide-fade-enter-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter,
-.slide-fade-leave-to {
-  opacity: 0;
-}
-.slide-fade-enter-to,
-.slide-fade-leave {
-  opacity: 1;
-}
 
 
 </style>

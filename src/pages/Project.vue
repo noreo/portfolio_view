@@ -1,5 +1,5 @@
 <template>
-    <transition name="pslide" >
+<transition :duration="1500">
       <div class="single__project">
         <header class="home-project container">
           <h3 :class="textClass">{{objProject.client}}</h3>
@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-    </transition>
+</transition>
 </template>
 
 <script>
@@ -61,8 +61,14 @@ export default {
     });
     this.textClass += this.objProject.ref;
     console.log(this.index);
-    TweenLite.to(".project__background", 1.5, {x:0, ease:Power2.easeInOut});
-    
+    TweenLite.to(".project__background", 1.5, { x: 0, ease: Power2.easeInOut });
+  },
+  beforeDestroy: function() {
+    console.log("beforeDestroy");
+    TweenLite.to(".project__background", 1, {
+      x: '100%',
+      ease: Power2.easeInOut,
+    });
   }
 };
 </script>
@@ -79,8 +85,8 @@ export default {
   margin: 0;
   top: 0;
   left: 0;
-    transform: translateX(100vw);
-  
+  transform: translateX(100vw);
+
   width: 100%;
   height: 100%;
   z-index: 2; //hover home vertical line
@@ -115,21 +121,5 @@ export default {
   .project__background {
   }
 } */
-@keyframes pslide-in {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes pslide-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 
 </style>
