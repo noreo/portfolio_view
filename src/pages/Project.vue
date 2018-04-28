@@ -1,17 +1,22 @@
 <template>
-<transition :duration="1500">
-      <div class="single__project">
-        <header class="home-project container">
-          <h3 :class="textClass">{{objProject.client}}</h3>
-                <h1 class="h2">{{ objProject.title }}</h1>
-            </header>
-        <div class="project__background">
-          <div class="container">
-          dsahdjshajdhsa
+  <transition    
+      name="sliding"
+      v-on:enter="enter"
+      v-on:leave="leave"
+      v-bind:css="false"
+  >
+        <div class="single__project">
+          <header class="home-project container">
+            <h3 :class="textClass">{{objProject.client}}</h3>
+                  <h1 class="h2">{{ objProject.title }}</h1>
+              </header>
+          <div class="project__background">
+            <div class="container">
+            dsahdjshajdhsa
+            </div>
           </div>
         </div>
-      </div>
-</transition>
+  </transition>
 </template>
 
 <script>
@@ -48,7 +53,23 @@ export default {
       textClass: "color-"
     };
   },
-  methods: {},
+  methods: {
+    enter: function(el, done) {
+      TweenLite.to(".project__background", 1.5, {
+        x: 0,
+        ease: Power2.easeInOut,
+        onComplete: done
+      });
+    },
+    leave: function(el, done) {
+      console.log("byy");
+      TweenLite.to(".project__background", 1, {
+        x: "110%",
+        ease: Power2.easeInOut,
+        onComplete: done
+      });
+    }
+  },
   mounted: function() {
     var url = this.$route.params.name;
     var i = 0;
@@ -61,15 +82,8 @@ export default {
     });
     this.textClass += this.objProject.ref;
     console.log(this.index);
-    TweenLite.to(".project__background", 1.5, { x: 0, ease: Power2.easeInOut });
   },
-  beforeDestroy: function() {
-    console.log("beforeDestroy");
-    TweenLite.to(".project__background", 1, {
-      x: '100%',
-      ease: Power2.easeInOut,
-    });
-  }
+  beforeDestroy: function() {}
 };
 </script>
 
@@ -121,5 +135,4 @@ export default {
   .project__background {
   }
 } */
-
 </style>
