@@ -1,21 +1,16 @@
 <template>
-  <transition    
-      name="sliding"
-      v-on:enter="enter"
-      v-on:leave="leave"
-      v-bind:css="false"
-  >
-        <div class="single__project">
-          <header class="home-project container">
-            <h3 :class="textClass">{{objProject.client}}</h3>
-                  <h1 class="h2">{{ objProject.title }}</h1>
-              </header>
-          <div class="project__background">
-            <div class="container">
-            dsahdjshajdhsa
-            </div>
-          </div>
+  <transition name="sliding" v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
+    <div class="single__project">
+      <header class="home-project container">
+        <h3 :class="textClass">{{objProject.client}}</h3>
+        <h1 class="h2">{{ objProject.title }}</h1>
+      </header>
+      <div class="project__background">
+        <div class="container">
+          dsahdjshajdhsa
         </div>
+      </div>
+    </div>
   </transition>
 </template>
 

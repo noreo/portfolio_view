@@ -1,43 +1,38 @@
 <template>
-<transition>
-
-<div>
-        <div class="vl" v-bind:class="{ show: !isScrolled /*|| isLastSection, top: isLastSection*/}">
-          <span class="cercle"></span>
-        </div>
-  <div class="home" id="fullpage">
-  <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
-    <header class="cover section" data-anchor="welcome">
-      <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
-      <div class="intro">
-        <h1 v-html="intro"></h1>
+  <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
+    <div>
+      <div class="vl" v-bind:class="{ show: !isScrolled /*|| isLastSection, top: isLastSection*/}">
+        <span class="cercle"></span>
       </div>
-    </header>
-      <HomeProject v-for="(project, index) in projects" 
-      :key="index" 
-      :projectname="project.ref" 
-      :url="project.url+'/'"
-      :client="project.client" 
-      :title="project.title" 
-      :details="project.details" 
-      :pathcover="urlProj+project.ref+'/'+project.images.cover.file"
-      :typecover="project.images.cover.type" 
-      />
-      <div id="site_contact" class="conclusion container section" data-anchor="site_contact">
-        <div class="container__txt--conclusion">
-          <span class="cercle"></span>
-        <h2>Thanks for browsing by.</h2>
-        <p>If you want to talk about interactive design, chocolat cookies, electro music or yoga, feel free to contact me.</p>
-        <div class="links"><a href="mailto:">abercon@gmail.com</a><a href="http://">Linkedin</a><a href="http://">Behance</a></div>
+      <scroll-slider>
+        <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
+        <header class="cover section" data-anchor="welcome">
+          <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
+          <div class="intro">
+            <h1 v-html="intro"></h1>
+          </div>
+        </header>
+        <HomeProject v-for="(project, index) in projects" :key="index" :projectname="project.ref" :url="project.url+'/'" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj+project.ref+'/'+project.images.cover.file" :typecover="project.images.cover.type" />
+        <div id="site_contact" class="conclusion container section" data-anchor="site_contact">
+          <div class="container__txt--conclusion">
+            <span class="cercle"></span>
+            <h2>Thanks for browsing by.</h2>
+            <p>If you want to talk about interactive design, chocolat cookies, electro music or yoga, feel free to contact me.</p>
+            <div class="links">
+              <a href="mailto:">abercon@gmail.com</a>
+              <a href="http://">Linkedin</a>
+              <a href="http://">Behance</a>
+            </div>
+          </div>
+        </div>
+      </scroll-slider>
     </div>
-    </div>
-  </div>
-</div>
-</transition>
+  </transition>
 </template>
 
 <script>
 import HomeProject from "../components/HomeProject";
+import ScrollSlider from "../components/ScrollSlider";
 import Data from "../assets/data_en.json";
 var url_proj = "../static/assets/projects/";
 import config from "../config";
@@ -46,7 +41,7 @@ var inteval;
 
 //import { onScroll } from "../components/mixins/onscroll";
 
-import fullpage from "../global_js/javascript.fullPage.min";
+//import fullpage from "../global_js/javascript.fullPage.min";
 
 import { Bus } from "../bus.js";
 
@@ -64,7 +59,8 @@ export default {
     }
   },
   components: {
-    HomeProject
+    HomeProject,
+   'scroll-slider': ScrollSlider
   },
   data() {
     return {
@@ -109,13 +105,27 @@ export default {
     },
     movetocontact() {
       fullpage.moveTo(this.lastSection);
+    },
+    enter: function(el, done) {
+      TweenLite.to(".home", 1, {
+        alpha: 1,
+        ease: Power2.easeInOut,
+        onComplete: done
+      });
+    },
+    leave: function(el, done) {
+      console.log("byy home");
+      TweenLite.to(".home", 1, {
+        alpha: 0,
+        onComplete: done
+      });
     }
   },
   mounted: function() {
     var comp = this;
 
     this.lastSection = document.querySelectorAll("#fullpage .section").length;
-    this.initFullpage();
+ //   this.initFullpage();
     //  window.addEventListener("resize", this.initFullpage);
 
     //gotocontact from another page
@@ -142,16 +152,10 @@ export default {
 <style lang="scss" >
 @import "../global_scss/colors.scss";
 @import "../global_scss/base/_variables.scss";
-@import "../global_js/javascript.fullPage.css";
+//@import "../global_js/javascript.fullPage.css";
 
 //for fullpage
-#fullpage,
-.section,
-.fp-table,
-body,
-html {
-  height: 100%;
-}
+
 
 $vl-height: 8em;
 $vl-height-sm: 3em;
@@ -263,7 +267,7 @@ body {
       position: absolute;
       top: -2rem;
       left: 50%;
-      margin-left: - $cercle-size / 2;
+      margin-left: -$cercle-size / 2;
       transform: translateY(-50vh);
       opacity: 0;
     }
@@ -303,7 +307,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    margin-left: - $cercle-size / 2;
+    margin-left: -$cercle-size / 2;
   }
   &.show {
     transition-delay: 700ms !important;
@@ -382,7 +386,7 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   p,
   .goto-container .inner-goto-container,
   .container__txt--conclusion .links {
-    bottom: -2rem !important; //move down element from 20px in height 768px
+    //bottom: -2rem; //move down element from 20px in height 768px
   }
   &.active {
     h2,

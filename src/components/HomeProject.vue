@@ -1,23 +1,19 @@
 <template>
 
-    <div class="section home-project container" v-bind:data-anchor="'proj_'+ this.projectname">
-      <div v-bind:class="{ active: isActive }">
-        <h3 v-bind:class="textClass">{{ client }}</h3>
-        <imagetype  :title="title"  :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }"/>
-        <h2 >{{ title }}</h2>
-        <p  class="project__details">{{ details }}</p>
-      </div>
-        <div class="goto-container">
-          <div class="inner-goto-container">
-            <router-link 
-            @mouseenter.native="mouseOver" 
-            @mouseleave.native="mouseOver" 
-            @mousedown.native="mouseDown"
-            class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
-            <span class="cercle" v-bind:class="[cercleClass, { animate: isActive }]"></span>
-          </div>
-        </div>
+  <div class="section home-project" v-bind:data-anchor="'proj_'+ this.projectname">
+    <div v-bind:class="{ active: isActive }">
+      <h3 v-bind:class="textClass">{{ client }}</h3>
+      <imagetype :title="title" :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }" />
+      <h2>{{ title }}</h2>
+      <p class="project__details">{{ details }}</p>
     </div>
+    <div class="goto-container">
+      <div class="inner-goto-container">
+        <router-link @mouseenter.native="mouseOver" @mouseleave.native="mouseOver" @mousedown.native="mouseDown" class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>
+        <span class="cercle" v-bind:class="[cercleClass, { animate: isActive }]"></span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -53,7 +49,7 @@ export default {
     mouseOver: function() {
       this.isActive = !this.isActive;
     },
-    mouseDown: function(){
+    mouseDown: function() {
       this.isActive = false;
     }
   }
@@ -143,7 +139,7 @@ $cercle-amin: 2s;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          margin-bottom: 4rem;
+          margin-bottom: 2rem;
           .button {
             float: left;
           }
@@ -172,8 +168,8 @@ $cercle-amin: 2s;
   15% {
     //300ms
     opacity: 1;
-  //  transform: translateX(0);
-   // transform: translateX(50vw);
+    //  transform: translateX(0);
+    // transform: translateX(50vw);
   }
   65% {
     //1sec
