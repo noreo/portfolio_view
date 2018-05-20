@@ -8,51 +8,52 @@ export default {
   name: "scrollslider",
   data() {
     return {
-      slideTime: 0.3, //sliding time
-      spaceTime:0.2, //"space" beetwen 2 slides
-      slideEase: Power3.easeOut, ///slide ease
-      elementEase: Back.easeOut.config(2), // elements inside slide
+      slideTime: 0.7, //sliding time
+      spaceTime: 0.2, //"space" beetwen 2 slides
+      slideEase:  Sine. easeOut, ///slide ease
+      elementEase:  Circ. easeOut // elements inside slide
     };
   },
   mounted: function() {
-   // TweenLite.set("body", { perspective: 700 });
-   TweenLite.lagSmoothing(300, 16);
+    // TweenLite.set("body", { perspective: 700 });
+    TweenLite.lagSmoothing(300, 16);
 
     var slides = document.querySelectorAll(".section"),
-      tl = new TimelineLite({ paused: true });
+      tl = new TimelineLite({ paused: true }),
+      tl2 = new TimelineLite({ paused: true });
     for (var i = 0; i < slides.length; i++) {
       //if(i!=0){tl.addPause('pause'+i)};
       if (i != slides.length - 1) {
         tl
           .to(slides[i], this.slideTime, {
-            top: '-100%',
-           // autoAlpha: 0,
-            ease:  this.slideEase
+            top: "-100%",
+            // autoAlpha: 0,
+            ease: this.slideEase
           })
-          .from(
+          .to(
             slides[i + 1],
             this.slideTime,
-            { top: '100%', 
-           // autoAlpha: 0,
-            ease: this.slideEase },
+            {
+              top: "0%",
+              // autoAlpha: 0,
+              ease: this.slideEase
+            },
             "-=" + (this.slideTime - this.spaceTime)
-          )
-          .from(
-            slides[i + 1].getElementsByTagName("p"),
-            1,
-            { y: "200%", ease: this.elementEase},
-            "-=" + this.slideTime / 2
-          ).from(
-            slides[i + 1].getElementsByClassName("inner-goto-container"),
-            1,
-            { y: "100%", ease: this.elementEase},
-            "-=" + (1 + this.slideTime / 2)
-          )
-          .addPause("pause" + i);
+          );
+          
+        tl
+        .add("element" + i)
+          .to(
+            slides[i + 1].getElementsByClassName("project__titles"),
+            this.slideTime,
+            { y: "0%", ease: this.slideEase },
+            "element" + i +  "-=" + this.slideTime
+          );
+
+          tl .addPause("pause" + i);
       }
     }
-      TweenLite.lagSmoothing(500, 16);
-    
+    TweenLite.lagSmoothing(500, 16);
 
     function GO(e) {
       var SD = isNaN(e) ? e.wheelDelta || -e.detail : e;
@@ -86,7 +87,13 @@ body {
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  top: 0;
+  top: 100%; //move sections down
   left: 0;
+  &:first-child {
+    top: 0; //except first one
+  }
+  .project__titles{
+    transform: translateY(100%);
+  }
 }
 </style>

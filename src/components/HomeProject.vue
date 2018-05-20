@@ -1,12 +1,12 @@
 <template>
 
   <div class="section home-project" v-bind:data-anchor="'proj_'+ this.projectname">
-    <div v-bind:class="{ active: isActive }">
+    <div class="project__titles">
       <h3 v-bind:class="textClass">{{ client }}</h3>
-      <imagetype :title="title" :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }" />
       <h2>{{ title }}</h2>
       <p class="project__details">{{ details }}</p>
     </div>
+      <imagetype :title="title" :pathcover="pathcover" :type="typecover" extraclass="home" v-bind:class="{ active: isActive }" />
     <div class="goto-container">
       <div class="inner-goto-container">
         <router-link @mouseenter.native="mouseOver" @mouseleave.native="mouseOver" @mousedown.native="mouseDown" class="button" v-bind:class="lineClass" :to="'/'+url">{{ cta_msg }}</router-link>

@@ -37,7 +37,7 @@ body {
 }
 
 * {
-  transition: all $transition;
+ // transition: all $transition;
 }
 
 #app {
