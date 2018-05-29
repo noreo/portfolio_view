@@ -58,14 +58,24 @@ export default {
           this.slideTime,
           {
             y: "0%",
-            ease: this.slideEase,
+            ease: this.elementEase,
             onStart: this.emitCurrentIndex,
             onReverseComplete: this.emitCurrentIndex,
             onStartParams: [i, true],
             onReverseCompleteParams: [i, false]
           },
+          "element" + i + "-=" + this.slideTime / 2
+        ).from(
+          slides[i + 1].getElementsByClassName("container__img"),
+          this.slideTime,
+          {
+           //top: "55%",
+            opacity:0,
+            ease: Circ.easeIn,
+          },
           "element" + i + "-=" + this.slideTime
         );
+        //container__img
 
         tl.addPause("pause" + i);
       }
