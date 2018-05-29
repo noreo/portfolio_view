@@ -108,6 +108,8 @@ export default {
     line-height: 1.5em;
     position: relative;
     display: inline-block;
+  transition: opacity $transition;
+    
     * {
       height: 1.5em;
       width: 1.5em;
@@ -152,7 +154,8 @@ export default {
 
 .navbar.onscroll {
   .logo-min {
-    transition-delay: 700ms;
+    //transition-delay: 700ms;
+  transition: opacity $transition;
     opacity: 1;
     visibility: visible;
   }

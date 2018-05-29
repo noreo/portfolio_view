@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <StickyHeader v-bind:class="{ onscroll: isScrolled }" />
-      <router-view @update="updateOnScroll"></router-view>
+      <router-view @is-scroll="updateOnScroll"></router-view>
   </div>
 </template>
 
@@ -23,7 +23,6 @@ export default {
   },
   mounted: function() {
     var url = this.$route.params.name;
-    console.log(url);
   }
 };
 </script>
@@ -37,7 +36,7 @@ body {
 }
 
 * {
- // transition: all $transition;
+  // transition: all $transition;
 }
 
 #app {
@@ -88,9 +87,6 @@ body {
   }
 }
 
-
-
-
 @-webkit-keyframes slideInRight {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
@@ -121,8 +117,4 @@ body {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
 }
-
-
-
-
 </style>

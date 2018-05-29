@@ -1,10 +1,10 @@
 <template>
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
     <div>
-      <div class="vl" v-bind:class="{ show: !isScrolled /*|| isLastSection, top: isLastSection*/}">
+      <div class="vl" v-bind:class="{ show: isTop /*|| isLastSection, top: isLastSection*/}">
         <span class="cercle"></span>
       </div>
-      <scroll-slider>
+      <scroll-slider v-on:is-scroll="handleScroll">
         <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
         <header class="cover section" data-anchor="welcome">
           <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
@@ -67,14 +67,15 @@ export default {
       intro: Data.intro,
       projects: Data.projects,
       urlProj: config.url_proj,
-      isScrolled: false,
+      isTop: true,
       isLastSection: false,
       lastSection: 1
     };
   },
   methods: {
     handleScroll(isTop) {
-      this.$emit("update", isTop);
+      this.isTop = isTop;
+      this.$emit("is-scroll", !isTop);
     },
     initFullpage() {
       var comp = this;
@@ -302,7 +303,7 @@ body {
   white-space: nowrap;
   z-index: 1;
   opacity: 0;
-
+  transition: opacity $transition;
   .cercle {
     position: absolute;
     left: 0;
@@ -310,7 +311,7 @@ body {
     margin-left: -$cercle-size / 2;
   }
   &.show {
-    transition-delay: 700ms !important;
+    //transition-delay: 700ms !important;
 
     opacity: 1;
     .cercle {

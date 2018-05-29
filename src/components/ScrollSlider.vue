@@ -8,19 +8,31 @@ export default {
   name: "scrollslider",
   data() {
     return {
+      isTop: true,
       slideTime: 0.7, //sliding time
       spaceTime: 0.2, //"space" beetwen 2 slides
-      slideEase:  Sine. easeOut, ///slide ease
-      elementEase:  Circ. easeOut // elements inside slide
+      slideEase: Sine.easeOut, ///slide ease
+      elementEase: Circ.easeOut // elements inside slide
     };
+  },
+  methods: {
+    emitCurrentIndex(index, isGoingDown) {
+      
+      if(isGoingDown){
+        this.isTop = false;
+      }
+      else{
+        this.isTop = (index == 0); //only true when going up and first slide
+      }
+        this.$emit("is-scroll", this.isTop);
+    }
   },
   mounted: function() {
     // TweenLite.set("body", { perspective: 700 });
     TweenLite.lagSmoothing(300, 16);
 
     var slides = document.querySelectorAll(".section"),
-      tl = new TimelineLite({ paused: true }),
-      tl2 = new TimelineLite({ paused: true });
+      tl = new TimelineLite({ paused: true });
     for (var i = 0; i < slides.length; i++) {
       //if(i!=0){tl.addPause('pause'+i)};
       if (i != slides.length - 1) {
@@ -40,21 +52,26 @@ export default {
             },
             "-=" + (this.slideTime - this.spaceTime)
           );
-          
-        tl
-        .add("element" + i)
-          .to(
-            slides[i + 1].getElementsByClassName("project__titles"),
-            this.slideTime,
-            { y: "0%", ease: this.slideEase },
-            "element" + i +  "-=" + this.slideTime
-          );
 
-          tl .addPause("pause" + i);
+        tl.add("element" + i).to(
+          slides[i + 1].getElementsByClassName("project__titles"),
+          this.slideTime,
+          {
+            y: "0%",
+            ease: this.slideEase,
+            onStart: this.emitCurrentIndex,
+            onReverseComplete: this.emitCurrentIndex,
+            onStartParams: [i, true],
+            onReverseCompleteParams: [i, false]
+          },
+          "element" + i + "-=" + this.slideTime
+        );
+
+        tl.addPause("pause" + i);
       }
     }
     TweenLite.lagSmoothing(500, 16);
-
+    
     function GO(e) {
       var SD = isNaN(e) ? e.wheelDelta || -e.detail : e;
       if (SD < 0) {
@@ -92,7 +109,7 @@ body {
   &:first-child {
     top: 0; //except first one
   }
-  .project__titles{
+  .project__titles {
     transform: translateY(100%);
   }
 }
