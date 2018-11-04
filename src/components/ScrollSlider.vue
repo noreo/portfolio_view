@@ -11,7 +11,7 @@ export default {
       isTop: true,
       slideTime: 0.7, //sliding time
       spaceTime: 0.2, //"space" beetwen 2 slides
-      slideEase: Sine.easeOut, ///slide ease
+      slideEase: Sine.easeInOut, ///slide ease
       elementEase: Circ.easeOut // elements inside slide
     };
   },
