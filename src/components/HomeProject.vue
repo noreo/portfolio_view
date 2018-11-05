@@ -1,7 +1,7 @@
 <template>
 
   <div class="section home-project" v-bind:data-anchor="'proj_'+ this.projectname">
-    <div class="project__titles">
+    <div class="project__titles container">
       <h3 v-bind:class="textClass">{{ client }}</h3>
       <h2>{{ title }}</h2>
       <p class="project__details">{{ details }}</p>

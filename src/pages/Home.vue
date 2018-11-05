@@ -13,8 +13,8 @@
           </div>
         </header>
         <HomeProject v-for="(project, index) in projects" :key="index" :projectname="project.ref" :url="project.url+'/'" :client="project.client" :title="project.title" :details="project.details" :pathcover="urlProj+project.ref+'/'+project.images.cover.file" :typecover="project.images.cover.type" />
-        <div id="site_contact" class="conclusion container section" data-anchor="site_contact">
-          <div class="container__txt--conclusion">
+        <div id="site_contact" class="conclusion section" data-anchor="site_contact">
+          <div class="container__txt--conclusion container">
             <span class="cercle"></span>
             <h2>Thanks for browsing by.</h2>
             <p>If you want to talk about interactive design, chocolat cookies, electro music or yoga, feel free to contact me.</p>
@@ -162,7 +162,7 @@ $vl-height: 8em;
 $vl-height-sm: 3em;
 $vl-height-lg: 11em;
 $cercle-size: 1em;
-$cercle-amin: 7s;
+$cercle-amin: 4s;
 
 body {
   background: $deepspace;
@@ -342,7 +342,7 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
     opacity: 1;
     transform: translateY(0);
   }
-  43% {
+  21% {
     //3sec
     opacity: 1;
     transform: translateY(0);
@@ -358,7 +358,9 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
   }
   87% {
     opacity: 0;
-    transform: translateY($vl-height-lg);
+    //transform: translateY($vl-height-lg);
+    transform: translateY(0);
+
   }
   100% {
     opacity: 1;
