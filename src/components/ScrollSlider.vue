@@ -53,11 +53,15 @@ export default {
             "-=" + (this.slideTime - this.spaceTime)
           );
 
-        tl.add("element" + i).to(
+        tl
+        .add(
+          "element" + i
+        ).to(
           slides[i + 1].getElementsByClassName("project__titles"),
           this.slideTime,
           {
             y: "0%",
+            alpha: 1,
             ease: this.elementEase,
             onStart: this.emitCurrentIndex,
             onReverseComplete: this.emitCurrentIndex,
@@ -121,6 +125,7 @@ body {
   }
   .project__titles {
     transform: translateY(100%);
+    opacity: 0;
   }
 }
 </style>

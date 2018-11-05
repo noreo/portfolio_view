@@ -39,15 +39,10 @@ import config from "../config";
 
 var inteval;
 
-//import { onScroll } from "../components/mixins/onscroll";
-
-//import fullpage from "../global_js/javascript.fullPage.min";
-
 import { Bus } from "../bus.js";
 
 export default {
   name: "home",
-  // mixins: [onScroll],
   props: {
     lang: {
       type: String,
@@ -77,35 +72,9 @@ export default {
       this.isTop = isTop;
       this.$emit("is-scroll", !isTop);
     },
-    initFullpage() {
-      var comp = this;
-      // if (screen && screen.width > 400) {
-      //if not mobile
-      fullpage.initialize("#fullpage", {
-        afterLoad: function(anchorLink, index) {
-          //  if (comp.$router.path !== "/") comp.$router.push({ path: "/" }); //if is contact then..
-        },
-        onLeave: function(index, nextIndex, direction) {
-          let s = nextIndex != 1;
-          comp.handleScroll(s);
-          comp.isScrolled = s;
-          comp.isLastSection = false; //remove vertical line when leaving contact section
-        },
-        afterLoad: function(anchorLink, index) {
-          comp.isLastSection = comp.lastSection == index;
-        }
-      });
-      /* } else {
-        //if mobile: no auto scroll
-        window.addEventListener("scroll", function() {
-          let s = window.scrollY > 5;
-          comp.handleScroll(s);
-          comp.isScrolled = s;
-        });
-      }*/
-    },
     movetocontact() {
-      fullpage.moveTo(this.lastSection);
+      console.log('contact')
+      //fullpage.moveTo(this.lastSection);
     },
     enter: function(el, done) {
       TweenLite.to(".home", 1, {
@@ -125,9 +94,7 @@ export default {
   mounted: function() {
     var comp = this;
 
-    this.lastSection = document.querySelectorAll("#fullpage .section").length;
- //   this.initFullpage();
-    //  window.addEventListener("resize", this.initFullpage);
+    this.lastSection = document.querySelectorAll(".home .section").length;
 
     //gotocontact from another page
     if (comp.$route.query.p == "contact") {
@@ -304,22 +271,26 @@ body {
   z-index: 1;
   opacity: 0;
   transition: opacity $transition;
+  transition-duration: 0.4s;
   .cercle {
     position: absolute;
     left: 0;
     top: 0;
     margin-left: -$cercle-size / 2;
+          //start animatation
+      transition: transform;
+      transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+      animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
+      // transform: translateY($vl-height);
   }
   &.show {
     //transition-delay: 700ms !important;
 
     opacity: 1;
+
+
     .cercle {
-      //start animatation
-      transition: transform;
-      transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-      animation: movecercle $cercle-amin infinite; /* IE 10+, Fx 29+ */
-      // transform: translateY($vl-height);
+
     }
   }
   &.top {
