@@ -120,7 +120,7 @@ $bp-small-mobile: "max-width: 321px" !default;
     }
   }
 }
-$cercle-amin: 2s;
+$cercle-amin: 3s;
 
 // Larger than tablet (desktop)
 @media (#{$bp-larger-than-tablet}) {
@@ -143,11 +143,15 @@ $cercle-amin: 2s;
           .button {
             float: left;
           }
+
           .cercle {
             display: block;
             opacity: 0;
-            float: left;
+            /* float: left; */
             margin-top: 0.8rem;
+            /* margin-left: 0.8rem; */
+            position: absolute;
+            right: -1.8rem;
             &.animate {
               transition: transform;
               transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
@@ -168,7 +172,7 @@ $cercle-amin: 2s;
   15% {
     //300ms
     opacity: 1;
-    //  transform: translateX(0);
+    transform: translateX(0);
     // transform: translateX(50vw);
   }
   65% {

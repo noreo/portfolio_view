@@ -129,7 +129,7 @@ $vl-height: 8em;
 $vl-height-sm: 3em;
 $vl-height-lg: 11em;
 $cercle-size: 1em;
-$cercle-amin: 4s;
+$cercle-amin: 3.5s;
 
 body {
   background: $deepspace;
@@ -284,14 +284,7 @@ body {
       // transform: translateY($vl-height);
   }
   &.show {
-    //transition-delay: 700ms !important;
-
     opacity: 1;
-
-
-    .cercle {
-
-    }
   }
   &.top {
     bottom: auto;
@@ -313,12 +306,12 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
     opacity: 1;
     transform: translateY(0);
   }
-  21% {
+  11% {
     //3sec
     opacity: 1;
     transform: translateY(0);
   }
-  57% {
+  47% {
     //1sec
     opacity: 1;
     transform: translateY($vl-height-lg);
