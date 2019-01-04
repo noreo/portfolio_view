@@ -4,6 +4,8 @@
     </div>
 </template>
 <script>
+import { Bus } from "../bus.js";
+
 export default {
   name: "scrollslider",
   data() {
@@ -96,6 +98,14 @@ export default {
     }
     document.addEventListener("mousewheel", GO);
     document.addEventListener("DOMMouseScroll", GO);
+
+     //gotocontact from home
+    Bus.$on("movetocontact", function() {
+      console.log("coucoucontact");
+      //move to contact
+        tl.play("element4");
+
+    });
   }
 };
 </script>
