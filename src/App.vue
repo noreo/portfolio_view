@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <StickyHeader v-bind:class="{ onscroll: isScrolled }" />
+  <div id="app" v-bind:class="{ onscroll: isScrolled }">
+    <StickyHeader  />
       <router-view @is-scroll="updateOnScroll"></router-view>
   </div>
 </template>

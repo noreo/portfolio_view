@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div>
         <slot></slot>
     </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     emitCurrentIndex(index, isGoingDown) {
-      
+      this.$router.push({ query: { p: index }})
       if(isGoingDown){
         this.isTop = false;
       }
@@ -30,13 +30,10 @@ export default {
     }
   },
   mounted: function() {
-    // TweenLite.set("body", { perspective: 700 });
-    TweenLite.lagSmoothing(300, 16);
 
     var slides = document.querySelectorAll(".section"),
       tl = new TimelineLite({ paused: true });
     for (var i = 0; i < slides.length; i++) {
-      //if(i!=0){tl.addPause('pause'+i)};
       if (i != slides.length - 1) {
         tl
           .to(slides[i], this.slideTime, {
@@ -77,7 +74,7 @@ export default {
           {
            //top: "55%",
             opacity:0,
-            ease: Circ.easeIn,
+            ease: Circ.easeOut,
           },
           "element" + i + "-=" + this.slideTime
         );
@@ -86,7 +83,6 @@ export default {
         tl.addPause("pause" + i);
       }
     }
-    TweenLite.lagSmoothing(500, 16);
     
     function GO(e) {
       var SD = isNaN(e) ? e.wheelDelta || -e.detail : e;
@@ -101,11 +97,18 @@ export default {
 
      //gotocontact from home
     Bus.$on("movetocontact", function() {
-      console.log("coucoucontact");
       //move to contact
         tl.play("element4");
 
     });
+
+    //move to right session when page opens
+    if (typeof this.$route.query.p !== 'undefined') {
+    // the variable is defined
+        tl.play("element" + this.$route.query.p);
+
+}
+    
   }
 };
 </script>

@@ -84,6 +84,7 @@ export default {
       opacity: 0.4;
       transition-duration: 500ms;
       z-index: -1;
+      margin: 1rem 0 0 0;
       &.active{
         opacity: 1;
       }

@@ -1,11 +1,10 @@
 <template>
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
-    <div>
-      <div class="vl" v-bind:class="{ show: isTop /*|| isLastSection, top: isLastSection*/}">
+    <div class="home">
+      <div class="vl" v-bind:class="{ /*show: isTop || isLastSection, top: isLastSection*/}">
         <span class="cercle"></span>
       </div>
       <scroll-slider v-on:is-scroll="handleScroll">
-        <!--  <StickyHeader class="white" v-bind:class="{ onscroll: isScrolled }" />-->
         <header class="cover section" data-anchor="welcome">
           <svgicon class="mainlogo" name="logo" width="65" height="65" color=""></svgicon>
           <div class="intro">
@@ -25,7 +24,7 @@
             </div>
           </div>
         </div>
-      </scroll-slider>
+   </scroll-slider>
     </div>
   </transition>
 </template>
@@ -106,7 +105,7 @@ export default {
     });
     //gotohome from home
     Bus.$on("movetotop", function() {
-      fullpage.moveTo(1); //move to top
+      //fullpage.moveTo(1); //move to top
     });
 
     if (this.contact) {
@@ -269,7 +268,7 @@ body {
   margin-left: -1px;
   white-space: nowrap;
   z-index: 1;
-  opacity: 0;
+  opacity: 1;
   transition: opacity $transition;
   transition-duration: 0.4s;
   .cercle {
@@ -284,12 +283,17 @@ body {
       // transform: translateY($vl-height);
   }
   &.show {
-    opacity: 1;
+    opacity: 0;
   }
   &.top {
     bottom: auto;
     top: 0;
   }
+}
+
+//app onscroll
+.onscroll .vl{
+    opacity: 0;
 }
 .cercle {
   display: block;
@@ -349,12 +353,7 @@ $one-sec: 100 / $cercle-amin; //1 second in pourcentage
 //paralax
 
 .section {
-  h2,
-  p,
-  .goto-container .inner-goto-container,
-  .container__txt--conclusion .links {
-    //bottom: -2rem; //move down element from 20px in height 768px
-  }
+  position: relative;
   &.active {
     h2,
     p,

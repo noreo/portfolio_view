@@ -152,7 +152,7 @@ export default {
   }
 }
 
-.navbar.onscroll {
+.onscroll .navbar{
   .logo-min {
     //transition-delay: 700ms;
   transition: opacity $transition;

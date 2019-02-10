@@ -62,9 +62,10 @@ export default {
 @import "../global_scss/base/_variables.scss";
 #app {
   .home-project {
-    min-height: 100vh; //fullpage is doing it?
+    min-height: 100vh; 
     overflow: visible;
-    padding-top: 5em;
+    padding-top: 6em;
+    box-sizing: border-box;
     h3 {
       margin-bottom: 1rem;
     }
@@ -155,7 +156,7 @@ $cercle-amin: 3s;
             &.animate {
               transition: transform;
               transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-              animation: movecercle_h $cercle-amin infinite; /* IE 10+, Fx 29+ */
+              animation: movecercle_h $cercle-amin infinite; 
               // transform: translateX($vl-height);
             }
           }
