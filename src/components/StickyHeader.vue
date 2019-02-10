@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar" v-bind:class="{ white: isHeaderWhite }">
     <div class="container">
-      <router-link class="logo-min" to="/" @click.native="gototop">
+      <router-link class="logo-min" :to="{ path: '/', query: { p: ref }}" @click.native="gototop">
         <svgicon name="logo-min" width="30" height="30" color=""></svgicon>
       </router-link>
       <ul class="navbt">
@@ -35,11 +35,17 @@ export default {
   name: "header",
   data() {
     return {
-      isHeaderWhite: true
+      isHeaderWhite: true,
+      ref: ''
     };
   },
   mounted: function() {
     this.isHeaderWhite = (this.$route.name == "Home");
+    var comp = this;
+     Bus.$on("project", function(ref) {
+       comp.setProjectRef(ref);
+    });
+
   },
   methods: {
     gototop() {
@@ -49,12 +55,14 @@ export default {
     gotocontact() {
       // Send the event on the bus
       Bus.$emit("movetocontact");
+    },
+    setProjectRef(r){
+      this.ref = "proj_"+r;
     }
   },
   watch: {
     $route(to, from) {
       this.isHeaderWhite = (to.name == "Home");
-
     }
   }
 };

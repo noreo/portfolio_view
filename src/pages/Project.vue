@@ -6,16 +6,13 @@
         <h1 class="h2">{{ objProject.title }}</h1>
       </header>
       <div class="project__background">
-        <div class="container">
-          dsahdjshajdhsa
-        </div>
+        <div class="container">dsahdjshajdhsa</div>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
-import HomeProject from "../components/HomeProject";
 import Data from "../assets/data_en.json";
 import config from "../config";
 
@@ -35,7 +32,7 @@ export default {
     }
   },
   components: {
-    HomeProject
+    //HomeProject
   },
   data() {
     return {
@@ -76,7 +73,7 @@ export default {
       i++;
     });
     this.textClass += this.objProject.ref;
-    console.log(this.index);
+    Bus.$emit("project", this.objProject.ref);
   },
   beforeDestroy: function() {}
 };
