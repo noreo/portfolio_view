@@ -49,7 +49,7 @@ export default {
         );
         var p = slides[i + 1].dataset.anchor;
         var pRev = slides[i].dataset.anchor;
-        tl.add("element" + i)
+        tl.add("element" + p)
           .to(
             slides[i + 1].getElementsByClassName("project__titles"),
             this.slideTime,
@@ -62,7 +62,7 @@ export default {
               onStartParams: [p, true],
               onReverseCompleteParams: [pRev, false]
             },
-            "element" + i + "-=" + this.slideTime / 2
+            "element" + p + "-=" + this.slideTime / 2
           )
           .from(
             slides[i + 1].getElementsByClassName("container__img"),
@@ -72,7 +72,7 @@ export default {
               opacity: 0,
               ease: Circ.easeOut
             },
-            "element" + i + "-=" + this.slideTime
+            "element" + p + "-=" + this.slideTime
           );
         //container__img
 
@@ -94,13 +94,12 @@ export default {
     //gotocontact from home
     Bus.$on("movetocontact", function() {
       //move to contact
-      tl.play("element4");
+      tl.play("elementsite_contact");
     });
 
     //move to right session when page opens
     if (typeof this.$route.query.p !== "undefined") {
       // the variable is defined
-      console.log('moved');
       tl.play("element" + this.$route.query.p);
     }
   }
