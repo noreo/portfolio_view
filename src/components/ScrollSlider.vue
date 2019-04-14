@@ -14,18 +14,27 @@ export default {
       slideTime: 0.7, //sliding time
       spaceTime: 0.2, //"space" beetwen 2 slides
       slideEase: Sine.easeInOut, ///slide ease
-      elementEase: Circ.easeOut // elements inside slide
+      elementEase: Circ.easeOut, // elements inside slide
+      tl: new TimelineLite({ paused: true })
     };
   },
   methods: {
     emitCurrentIndex(index, isGoingDown) {
-      this.$router.push({ query: { p: index } });  //set project index
+      this.$router.push({ query: { p: index } }); //set project index
       if (isGoingDown) {
         this.isTop = false;
       } else {
         this.isTop = index == 0; //only true when going up and first slide
       }
       this.$emit("is-scroll", this.isTop);
+    },
+    GO(e) {
+      var SD = isNaN(e) ? e.wheelDelta || -e.detail : e;
+      if (SD < 0) {
+        this.tl.play();
+      } else {
+        this.tl.reverse();
+      }
     }
   },
   mounted: function() {
@@ -33,7 +42,7 @@ export default {
       tl = new TimelineLite({ paused: true });
     for (var i = 0; i < slides.length; i++) {
       if (i != slides.length - 1) {
-        tl.to(slides[i], this.slideTime, {
+        this.tl.to(slides[i], this.slideTime, {
           top: "-100%",
           // autoAlpha: 0,
           ease: this.slideEase
@@ -49,7 +58,7 @@ export default {
         );
         var p = slides[i + 1].dataset.anchor;
         var pRev = slides[i].dataset.anchor;
-        tl.add("element" + p)
+        this.tl.add("element" + p)
           .to(
             slides[i + 1].getElementsByClassName("project__titles"),
             this.slideTime,
@@ -76,32 +85,28 @@ export default {
           );
         //container__img
 
-        tl.addPause("pause" + i);
+        this.tl.addPause("pause" + i);
       }
     }
-
-    function GO(e) {
-      var SD = isNaN(e) ? e.wheelDelta || -e.detail : e;
-      if (SD < 0) {
-        tl.play();
-      } else {
-        tl.reverse();
-      }
-    }
-    document.addEventListener("mousewheel", GO);
-    document.addEventListener("DOMMouseScroll", GO);
+    document.addEventListener("mousewheel", this.GO, false);
+    document.addEventListener("DOMMouseScroll", this.GO, false);
 
     //gotocontact from home
     Bus.$on("movetocontact", function() {
       //move to contact
-      tl.play("elementsite_contact");
+      this.tl.play("elementsite_contact");
     });
 
     //move to right session when page opens
     if (typeof this.$route.query.p !== "undefined") {
       // the variable is defined
-      tl.play("element" + this.$route.query.p);
+      this.tl.play("element" + this.$route.query.p);
     }
+  },
+  beforeDestroy: function() {
+    console.log("Stopping slidder");
+    document.removeEventListener("mousewheel", this.GO, false);
+    document.removeEventListener("DOMMouseScroll", this.GO, false);
   }
 };
 </script>

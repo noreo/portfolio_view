@@ -83,7 +83,6 @@ export default {
       });
     },
     leave: function(el, done) {
-      console.log("byy home");
       TweenLite.to(".home", 1, {
         alpha: 0,
         onComplete: done

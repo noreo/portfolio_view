@@ -40,12 +40,16 @@ export default {
     };
   },
   mounted: function() {
+    
     this.isHeaderWhite = (this.$route.name == "Home");
     var comp = this;
      Bus.$on("project", function(ref) {
        comp.setProjectRef(ref);
     });
 
+  },
+  beforeDestroy:function() {
+    console.log('beforeDestroy'); 
   },
   methods: {
     gototop() {
